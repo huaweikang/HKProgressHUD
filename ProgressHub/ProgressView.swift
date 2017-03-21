@@ -105,7 +105,7 @@ class BarProgressView: UIView {
             
             context?.move(to: CGPoint(x: 4, y: rect.size.height / 2))
             context?.addArc(tangent1End: CGPoint(x: 4, y: rect.size.height - 4), tangent2End: CGPoint(x: radius + 4, y: rect.size.height - 4), radius: radius)
-            context?.addLine(to: CGPoint(x: amount, y: rect.size.width - 4))
+            context?.addLine(to: CGPoint(x: amount, y: rect.size.height - 4))
             context?.addLine(to: CGPoint(x: amount, y: radius + 4))
             
             context?.fillPath()
