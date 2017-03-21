@@ -12,6 +12,14 @@ import CoreGraphics
 
 public class ProgressHub: UIView {
     
+    public enum HudMode {
+        case indeterminate, determinate, determinateHorizontalBar, annularDeterminate, customView, text
+    }
+    
+    public enum HubAnimation {
+        case fade, zoom, zoomOut, zoomIn
+    }
+    
     // public
     public var progress: Float = 0.0
     public var progressObject: Progress?
@@ -22,6 +30,8 @@ public class ProgressHub: UIView {
     public var detailsLabel: UILabel?
     public var button: UIButton?
     public var removeFromSuperViewOnHide: Bool = false
+    public var mode: HudMode = .indeterminate
+    public var animationType: HubAnimation = .fade
     public var minShowTime: TimeInterval = 0.0
     public var graceTime: TimeInterval = 0.0
     
@@ -119,18 +129,20 @@ public class ProgressHub: UIView {
         hideDelayTimer = timer
     }
     
+    // MARK: Timer callbacks
     func handleGraceTimer(_ timer: Timer) {
         // Show the HUD only if the task is still running
         if(!isFinished!) {
+            showUsingAnimation(isUseAnimation!)
         }
     }
     
     func handleMinShowTimer(_ timer: Timer) {
-        
+        hideUsingAnimation(isUseAnimation!)
     }
     
     func handleHideTimer(_ timer: Timer) {
-        
+        hide(animated: timer.userInfo as! Bool)
     }
     
     // MARK: Internal show & hide operations
@@ -149,15 +161,43 @@ public class ProgressHub: UIView {
         setProgressDiaplayLinkEnabled(true)
         
         if(animation) {
-            
+            animateIn(true, withType: animationType, completion: nil)
+        } else {
+            self.bezelView?.alpha = CGFloat(self.layer.opacity)
+            self.backgroundView?.alpha = 1
         }
     }
     
     func hideUsingAnimation(_ animated: Bool) {
         if (animated && showStarted != nil) {
             self.showStarted = nil
-            
+            animateIn(false, withType: animationType, completion: { finished in
+                self.done()
+            })
+        } else {
+            showStarted = nil
+            bezelView?.alpha = 0
+            backgroundView?.alpha = 1
+            done()
         }
+    }
+    
+    func animateIn(_ animatingIn: Bool, withType type: HubAnimation, completion: ((Bool) -> Void)?) {
+        // Automatically determine the correct zoom animation type
+        if (type == .zoom) {
+            //type = animatingIn ? .zoomIn : .zoomOut
+        }
+        
+        let small = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        let big = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        
+        // TODO: fill
+        
+        
+    }
+    
+    func done() {
+        // TODO: fill
     }
     
     
