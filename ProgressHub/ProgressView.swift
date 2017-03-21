@@ -11,18 +11,6 @@ import UIKit
 
 
 class ProgressView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
-}
-
-class BarProgressView: UIView {
     var progress: Float = 0.0 {
         didSet {
             if(oldValue != progress) {
@@ -30,6 +18,10 @@ class BarProgressView: UIView {
             }
         }
     }
+
+}
+
+class BarProgressView: ProgressView {
     var lineColor = UIColor.white
     var progressRemainingColor = UIColor.clear {
         didSet {
