@@ -112,11 +112,41 @@ class BarProgressView: UIView {
         }
         // Progress in the right arc
         else if (amount > radius + 4) {
-            // TODO: fill
+            let x = amount - (rect.size.width - radius - 4.0)
+            
+            context?.move(to: CGPoint(x: 4, y: rect.size.height / 2))
+            context?.addArc(tangent1End: CGPoint(x: 4, y: 4), tangent2End: CGPoint(x: radius + 4, y: 4), radius: radius)
+            context?.addLine(to: CGPoint(x: rect.size.width - radius - 4, y: 4))
+            var angle = -acos(x / radius)
+            if (angle.isNaN) {
+                angle = 0.0
+            }
+            context?.addArc(center: CGPoint(x: rect.size.width - radius - 4, y: rect.size.height/2), radius: radius, startAngle: CGFloat.pi, endAngle: angle, clockwise: false)
+            context?.addLine(to: CGPoint(x: amount, y: rect.size.height / 2))
+            
+            context?.move(to: CGPoint(x: 4, y: rect.size.height / 2))
+            context?.addArc(tangent1End: CGPoint(x: 4, y: rect.size.height - 4), tangent2End: CGPoint(x: radius + 4, y: rect.size.height - 4), radius: radius)
+            context?.addLine(to: CGPoint(x: rect.size.width - radius - 4, y: rect.size.height - 4))
+            angle = acos(x / radius)
+            if (angle.isNaN) {
+                angle = 0.0
+            }
+            context?.addArc(center: CGPoint(x: rect.size.width - radius - 4, y: rect.size.height/2), radius: radius, startAngle: -CGFloat.pi, endAngle: angle, clockwise: true)
+            context?.addLine(to: CGPoint(x: amount, y: rect.size.height / 2))
+            
+            context?.fillPath()
         }
         // Progress is in the left arc
         else if (amount < radius + 4 && amount > 0) {
-            // TODO: fill
+            context?.move(to: CGPoint(x: 4, y: rect.size.height / 2))
+            context?.addArc(tangent1End: CGPoint(x: 4, y: 4), tangent2End: CGPoint(x: radius + 4, y: 4), radius: radius)
+            context?.addLine(to: CGPoint(x: radius + 4, y: rect.size.height / 2))
+            
+            context?.move(to: CGPoint(x: 4, y: rect.size.height / 2))
+            context?.addArc(tangent1End: CGPoint(x: 4, y: rect.size.height - 4), tangent2End: CGPoint(x: radius + 4, y: rect.size.height - 4), radius: radius)
+            context?.addLine(to: CGPoint(x: radius + 4, y: rect.size.height / 2))
+            
+            context?.fillPath()
         }
         
     }
