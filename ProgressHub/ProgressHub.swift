@@ -640,5 +640,46 @@ public class ProgressHubBackgroundView: UIView {
 }
 
 class ProgressHubRoundedButton: UIButton {
+    // MARK: Lifecycle
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.layer.borderWidth = 1.0
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Layout
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // Rounded corners
+        let height = self.bounds.height
+        self.layer.cornerRadius = height.divided(by: 2.0)
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        if(self.allControlEvents == UIControlEvents(rawValue: 0)) {
+            return CGSize.zero
+        }
+        var size = super.intrinsicContentSize
+        size.width += 20.0
+        return size
+    }
+    
+    // MARK: Color
+    override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
+        super.setTitleColor(color, for: state)
+        // Update related colors
+        let highlighted = isHighlighted
+        isHighlighted = highlighted
+        self.layer.borderColor = color?.cgColor
+    }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            let baseColor = self.titleColor(for: .selected)
+            backgroundColor = isHighlighted ? baseColor?.withAlphaComponent(0.1) : UIColor.clear
+        }
+    }
 }
