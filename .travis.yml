@@ -1,5 +1,7 @@
 language: swift 
 osx_image: xcode8
-xcode_project: ProgressHub.xcodeproj
-xcode_scheme: ProgressHub
-xcode_sdk: iphonesimulator9.2
+script:
+        - xcodebuild clean build -sdk iphonesimulator -workspace ProgressHub.xcworkspace -scheme ProgressHub CODE_SIGNING_REQUIRED=NO
+        - xcodebuild -scheme HubDemoTests -workspace ProgressHub.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=9.1' build test
+after_success:
+        - bash <(curl -s https://codecov.io/bash)
