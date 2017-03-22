@@ -26,7 +26,15 @@ public class ProgressHub: UIView {
     let defaultDetailsLabelFontSize: CGFloat = 12.0
     
     // public
-    public var progress: Float = 0.0
+    public var progress: Float = 0.0 {
+        didSet {
+            if(oldValue != progress) {
+                if let progressView = indicator as? ProgressView {
+                    progressView.progress = progress
+                }
+            }
+        }
+    }
     public var progressObject: Progress?
     public var bezelView: ProgressHubBackgroundView?
     public var backgroundView: ProgressHubBackgroundView?
