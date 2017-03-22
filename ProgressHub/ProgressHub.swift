@@ -347,7 +347,18 @@ public class ProgressHub: UIView {
     }
     
     func updateViews(forColor color: UIColor) {
-        // TODO: fill
+        label?.textColor = color
+        detailsLabel?.textColor = color
+        button?.setTitleColor(color, for: .normal)
+        
+        // UIAppearance settings are prioritized. If they are preset the set color is ignored.
+        
+        if let barProgressView = indicator as? BarProgressView {
+            // TODO: fix check appearance
+            let appearance = BarProgressView.appearance(whenContainedInInstancesOf: [type(of: self)])
+            barProgressView.progressColor = color
+            barProgressView.lineColor = color
+        }
     }
     
     func updateBezelMotionEffects() {
