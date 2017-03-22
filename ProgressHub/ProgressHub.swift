@@ -71,14 +71,6 @@ public class ProgressHub: UIView {
     var minShowTimer: Timer?
     var hideDelayTimer: Timer?
     var progressObjectDisplayLink: CADisplayLink?
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     public class func show(addedToView view: UIView, animated: Bool) -> ProgressHub {
         let hub = ProgressHub(withView: view)
@@ -385,7 +377,26 @@ public class ProgressHub: UIView {
     }
     
     func updateBezelMotionEffects() {
-        // TODO: fill
+        if (isDefaultMotionEffectsEnabled) {
+            let effectOffset: CGFloat = 10.0
+            let effectX = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+            effectX.maximumRelativeValue = effectOffset
+            effectX.minimumRelativeValue = -effectOffset
+            
+            let effectY = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongHorizontalAxis)
+            effectY.maximumRelativeValue = effectOffset
+            effectY.minimumRelativeValue = -effectOffset
+            
+            let group = UIMotionEffectGroup()
+            group.motionEffects = [effectX, effectY]
+            bezelView?.addMotionEffect(group)
+        } else {
+            if let effects = bezelView?.motionEffects {
+                for effect in effects {
+                    bezelView?.removeMotionEffect(effect)
+                }
+            }
+        }
     }
     
     // MARK: Layout
