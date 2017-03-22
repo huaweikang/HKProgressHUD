@@ -36,7 +36,19 @@ class ViewController: UITableViewController {
     
     // MARK: Examples
     func indeterminateExample() {
+        // Show the HUD on the root view (self.view is a scrollable table view and thus not suitable,
+        // as the HUD would move with the content as we scroll).
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
         
+        // Fire off an asynchronous task, giving UIKit the opportunity to redraw wit the HUD added to the
+        // view hierarchy.
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.doSomeWork()
+            
+            DispatchQueue.main.async {
+                hub.hide(animated: true)
+            }
+        }
     }
     func labelExample() {
         
@@ -63,6 +75,10 @@ class ViewController: UITableViewController {
     }
     
     
+    // MARK - Tasks
+    func doSomeWork() {
+        sleep(3)
+    }
     var canceled = false
     func doSomeWorkWithProgess() {
         var progress: Float = 0.0

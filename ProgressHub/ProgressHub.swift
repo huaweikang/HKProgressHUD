@@ -44,8 +44,13 @@ public class ProgressHub: UIView {
     public var button: UIButton?
     public var removeFromSuperViewOnHide: Bool = false
     // for test
-    //public var mode: HudMode = .indeterminate
-    public var mode: HudMode = .determinateHorizontalBar
+    public var mode: HudMode = .indeterminate {
+        didSet {
+            if(mode != oldValue) {
+                updateIndicators()
+            }
+        }
+    }
     public var contentColor = UIColor(white: 0, alpha: 0.7)
     public var animationType: HubAnimation = .fade
     public var offset: CGPoint = CGPoint(x: 0, y: 0)
@@ -341,7 +346,16 @@ public class ProgressHub: UIView {
     func updateIndicators() {
         // TODO: Add other type
         
-        if(mode == .determinateHorizontalBar) {
+        if (mode == .indeterminate) {
+            if indicator as? UIActivityIndicatorView == nil {
+                // Update to indeterminate mode
+                indicator?.removeFromSuperview()
+                let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+                activityIndicator.startAnimating()
+                indicator = activityIndicator
+                bezelView?.addSubview(activityIndicator)
+            }
+        } else if (mode == .determinateHorizontalBar) {
             indicator?.removeFromSuperview()
             indicator = BarProgressView()
             bezelView?.addSubview(indicator!)
@@ -367,10 +381,10 @@ public class ProgressHub: UIView {
         button?.setTitleColor(color, for: .normal)
         
         // UIAppearance settings are prioritized. If they are preset the set color is ignored.
-        
-        if let barProgressView = indicator as? BarProgressView {
-            // TODO: fix check appearance
-            let appearance = BarProgressView.appearance(whenContainedInInstancesOf: [type(of: self)])
+        if let activityIndicator = indicator as? UIActivityIndicatorView {
+            // TODO: fix check UIAppearance
+            activityIndicator.color = color
+        } else if let barProgressView = indicator as? BarProgressView {
             barProgressView.progressColor = color
             barProgressView.lineColor = color
         }
