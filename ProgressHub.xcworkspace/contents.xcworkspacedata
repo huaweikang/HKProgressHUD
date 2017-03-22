@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:HubDemo/HubDemo.xcodeproj">
+      location = "container:ProgressHub.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Carthage/Checkouts/Quick/Quick.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:ProgressHub.xcodeproj">
+      location = "group:HubDemo/HubDemo.xcodeproj">
    </FileRef>
 </Workspace>
