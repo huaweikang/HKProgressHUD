@@ -8,7 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
+    
+    let examples = [
+        ("Indeterminate mode", #selector(indeterminateExample)),
+        ("With label", #selector(labelExample)),
+        ("With details label", #selector(detailsLabelExample)),
+        ("On window", #selector(windowExample)),
+        ("Bar determinate mode", #selector(bardeterminateExample))
+                    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +32,24 @@ class ViewController: UIViewController {
     func setUp() {
         self.title = "Hub Test"
         
-        let hub = ProgressHub.show(addedToView: self.view, animated: true)
+    }
+    
+    // MARK: Examples
+    func indeterminateExample() {
+        
+    }
+    func labelExample() {
+        
+    }
+    func detailsLabelExample() {
+        
+    }
+    func windowExample() {
+        
+    }
+    
+    func bardeterminateExample() {
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
         hub.mode = .determinateHorizontalBar
         hub.label?.text = "Loading..."
         
@@ -37,6 +62,7 @@ class ViewController: UIViewController {
         }
     }
     
+    
     var canceled = false
     func doSomeWorkWithProgess() {
         var progress: Float = 0.0
@@ -47,11 +73,42 @@ class ViewController: UIViewController {
             }
             progress += 0.01
             DispatchQueue.main.async {
-                ProgressHub.hubForView(self.view)?.progress = progress
+                ProgressHub.hubForView((self.navigationController?.view)!)?.progress = progress
             }
             usleep(50000)
         }
     }
 
+    
+    // MARK: UITableViewDataSource
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return examples.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "exampleCell"
+        let exapmle = examples[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        cell.textLabel?.text = exapmle.0
+        cell.textLabel?.textColor = self.view.tintColor
+        cell.textLabel?.textAlignment = .center
+        cell.selectedBackgroundView = UIView()
+        cell.selectedBackgroundView?.backgroundColor = cell.textLabel?.textColor.withAlphaComponent(0.1)
+        return cell
+    }
+    
+    // MARK: UITableViewDelegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let example = examples[indexPath.row]
+        perform(example.1)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1, execute: {
+            tableView.deselectRow(at: indexPath, animated: true)
+        })
+    }
 }
 
