@@ -43,7 +43,6 @@ public class ProgressHub: UIView {
     public var detailsLabel: UILabel?
     public var button: UIButton?
     public var removeFromSuperViewOnHide: Bool = false
-    // for test
     public var mode: HudMode = .indeterminate {
         didSet {
             if(mode != oldValue) {
@@ -56,7 +55,7 @@ public class ProgressHub: UIView {
     public var offset: CGPoint = CGPoint(x: 0, y: 0)
     public var margin: CGFloat = 20.0
     public var minSize:CGSize = CGSize.zero
-    public var isSquare = true         // force the hub dimensions to be equal if possible
+    public var isSquare = false         // force the hub dimensions to be equal if possible
     public var isDefaultMotionEffectsEnabled = true
     public var minShowTime: TimeInterval = 0.0
     public var completionBlock: (() -> Void)?
