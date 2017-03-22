@@ -75,7 +75,7 @@ public class ProgressHub: UIView {
         let hub = ProgressHub(withView: view)
         hub.removeFromSuperViewOnHide = true
         view.addSubview(hub)
-        
+        hub.show(animated: animated)
         return hub;
     }
     
@@ -144,7 +144,7 @@ public class ProgressHub: UIView {
             RunLoop.current.add(timer, forMode: .commonModes)
             graceTimer = timer
         } else {
-            
+            showUsingAnimation(animated)
         }
     }
     
@@ -208,7 +208,7 @@ public class ProgressHub: UIView {
         if(animation) {
             animateIn(true, withType: animationType, completion: nil)
         } else {
-            self.bezelView?.alpha = CGFloat(self.layer.opacity)
+            self.bezelView?.alpha = 1
             self.backgroundView?.alpha = 1
         }
     }
@@ -227,17 +227,38 @@ public class ProgressHub: UIView {
         }
     }
     
-    func animateIn(_ animatingIn: Bool, withType type: HubAnimation, completion: ((Bool) -> Void)?) {
+    func animateIn(_ animatingIn: Bool, withType: HubAnimation, completion: ((Bool) -> Void)?) {
         // Automatically determine the correct zoom animation type
+        var type = withType
         if (type == .zoom) {
-            //type = animatingIn ? .zoomIn : .zoomOut
+            type = animatingIn ? .zoomIn : .zoomOut
         }
         
         let small = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        let big = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        let large = CGAffineTransform(scaleX: 1.5, y: 1.5)
         
-        // TODO: fill
+        // Set starting state
+        if (animatingIn && bezelView?.alpha == 0.0 && type == .zoomIn) {
+            bezelView?.transform = small
+        } else if (animatingIn && bezelView?.alpha == 0.0 && type == .zoomOut) {
+            bezelView?.transform = large
+        }
         
+        let animations = { () -> Void in
+            if (animatingIn) {
+                self.bezelView?.transform = .identity
+            } else if(!animatingIn && type == .zoomIn) {
+                self.bezelView?.transform = large
+            } else if(!animatingIn && type == .zoomOut) {
+                self.bezelView?.transform = small
+            }
+            
+            self.bezelView?.alpha = animatingIn ? 1.0 : 0.0
+            self.backgroundView?.alpha = animatingIn ? 1.0: 0.0
+        }
+        
+        // Spring animations are nicer
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .beginFromCurrentState, animations: animations, completion: completion)
         
     }
     
