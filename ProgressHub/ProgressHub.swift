@@ -46,12 +46,13 @@ public class ProgressHub: UIView {
     public var isSquare = true         // force the hub dimensions to be equal if possible
     public var isDefaultMotionEffectsEnabled = true
     public var minShowTime: TimeInterval = 0.0
+    public var completionBlock: (() -> Void)?
     public var graceTime: TimeInterval = 0.0
     
     var activityIndicatorColor: UIColor?
     
     var isUseAnimation: Bool?
-    var isFinished: Bool?
+    var isFinished: Bool = true
     var indicator: UIView?
     var showStarted: Date?
     var paddingConstraints: [NSLayoutConstraint]?
@@ -177,7 +178,7 @@ public class ProgressHub: UIView {
     // MARK: Timer callbacks
     func handleGraceTimer(_ timer: Timer) {
         // Show the HUD only if the task is still running
-        if(!isFinished!) {
+        if(isFinished) {
             showUsingAnimation(isUseAnimation!)
         }
     }
@@ -263,7 +264,21 @@ public class ProgressHub: UIView {
     }
     
     func done() {
-        // TODO: fill
+        // Cancel any scheduled hideDelayed: calls
+        hideDelayTimer?.invalidate()
+        setProgressDiaplayLinkEnabled(false)
+        
+        if (isFinished) {
+            alpha = 0
+            if (removeFromSuperViewOnHide) {
+                removeFromSuperview()
+            }
+        }
+        if let completed = completionBlock {
+            completed()
+        }
+        
+        // TODO: add progress hub delegate
     }
     
     // MARK: UI
