@@ -526,15 +526,69 @@ public class ProgressHub: UIView {
     }
 }
 
-public enum ProgressHubBackgroundStyle {
-    case solidColor, blur
-}
-
 public class ProgressHubBackgroundView: UIView {
-    var style: ProgressHubBackgroundStyle?
-    var color: UIColor?
+    public enum BackgroundStyle {
+        case solidColor, blur
+    }
     
+    // MARK: Appearance
+    public var style: BackgroundStyle? {
+        didSet {
+            updateForBackgroundStyle()
+        }
+    }
+    public var color: UIColor? {
+        didSet {
+            assert(color != nil, "The color should not be nil.")
+            updateViews(forColor: color!)
+        }
+    }
     
+    var effectView: UIVisualEffectView?
+    #if !os(tvOS)
+    var toolbar: UIToolbar?
+    #endif
+    
+    // MARK: Lifecycle
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        style = .blur
+        color = UIColor(white: 0.8, alpha: 0.6)
+        
+        self.clipsToBounds = true
+        updateForBackgroundStyle()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Layout
+    public override var intrinsicContentSize: CGSize {
+        return CGSize.zero
+    }
+    
+    // MARK: Views
+    func updateForBackgroundStyle() {
+        if (style == .blur) {
+            let effect = UIBlurEffect(style: .light)
+            effectView = UIVisualEffectView(effect: effect)
+            self.addSubview(effectView!)
+            effectView?.frame = self.bounds
+            effectView?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            backgroundColor = color
+            layer.allowsGroupOpacity = false
+        } else {
+            effectView?.removeFromSuperview()
+            effectView = nil
+            backgroundColor = color
+        }
+    }
+    
+    func updateViews(forColor color: UIColor) {
+        backgroundColor = color
+    }
 }
 
 class ProgressHubRoundedButton: UIButton {
