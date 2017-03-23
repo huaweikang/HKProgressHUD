@@ -5,9 +5,6 @@
       location = "container:ProgressHub.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Carthage/Checkouts/Quick/Quick.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:HubDemo/HubDemo.xcodeproj">
    </FileRef>
 </Workspace>
