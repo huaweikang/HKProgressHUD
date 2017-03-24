@@ -358,7 +358,8 @@ public class ProgressHub: UIView {
     func updateIndicators() {
         // TODO: Add other type
         
-        if (mode == .indeterminate) {
+        switch mode {
+        case .indeterminate:
             if indicator as? UIActivityIndicatorView == nil {
                 // Update to indeterminate mode
                 indicator?.removeFromSuperview()
@@ -367,11 +368,18 @@ public class ProgressHub: UIView {
                 indicator = activityIndicator
                 bezelView?.addSubview(activityIndicator)
             }
-        } else if (mode == .determinateHorizontalBar) {
+        case .determinateHorizontalBar:
             indicator?.removeFromSuperview()
             indicator = BarProgressView()
             bezelView?.addSubview(indicator!)
-        } else {
+        case .determinate:
+            if !(indicator is RoundProgressView) {
+                // Update to determinante indicator
+                indicator?.removeFromSuperview()
+                indicator = RoundProgressView()
+                bezelView?.addSubview(indicator!)
+            }
+        default:
             assert(false, "This mode has not be support.")
         }
         
@@ -399,6 +407,8 @@ public class ProgressHub: UIView {
         } else if let barProgressView = indicator as? BarProgressView {
             barProgressView.progressColor = color
             barProgressView.lineColor = color
+        } else if let roundProgressView = indicator as? RoundProgressView {
+            roundProgressView.progressTintColor = color
         }
     }
     

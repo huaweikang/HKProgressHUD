@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreGraphics
 
 
 class ProgressView: UIView {
@@ -141,5 +141,62 @@ class BarProgressView: ProgressView {
             context?.fillPath()
         }
         
+    }
+}
+
+class RoundProgressView: ProgressView {
+    // Indicator progress color, default white
+    var progressTintColor: UIColor = UIColor.red {
+        didSet {
+            if oldValue != progressTintColor {
+                setNeedsDisplay()
+            }
+        }
+    }
+    
+    convenience init() {
+        self.init(frame: CGRect(x: 0, y: 0, width: 37, height: 37))
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = UIColor.clear
+        isOpaque = false
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Drawing
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: 37, height: 37)
+    }
+    
+    // MARK: Drawing
+    override func draw(_ rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        
+        let lineWidth: CGFloat = 2
+        let allRect = bounds
+        let circleRect = allRect.insetBy(dx: lineWidth / 2, dy: lineWidth / 2)
+        progressTintColor.setStroke()
+        context?.setLineWidth(lineWidth)
+        context?.strokeEllipse(in: circleRect)
+ 
+        // 90 degrees
+        let startAngle = -(CGFloat.pi / 2.0)
+        // Draw Progress
+        let processPath = UIBezierPath()
+        processPath.lineCapStyle = .butt
+        processPath.lineWidth = lineWidth * 2.0
+        let radius = bounds.width / 2.0 - processPath.lineWidth / 2
+        let endAngle = CGFloat(progress * 2 * Float.pi) + startAngle
+        let pathCenter = CGPoint(x: bounds.midX, y: bounds.midY)
+        processPath.addArc(withCenter: pathCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        // Ensure that we don't get color overlaping when progressTintColor alpha < 1
+        context?.setBlendMode(.copy)
+        progressTintColor.set()
+        processPath.stroke()
     }
 }

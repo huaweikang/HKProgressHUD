@@ -15,7 +15,8 @@ class ViewController: UITableViewController {
         ("With label", #selector(labelExample)),
         ("With details label", #selector(detailsLabelExample)),
         ("On window", #selector(windowExample)),
-        ("Bar determinate mode", #selector(bardeterminateExample))
+        ("Bar determinate mode", #selector(bardeterminateExample)),
+        ("Determinate mode", #selector(determinateExample))
                     ]
 
     override func viewDidLoad() {
@@ -36,11 +37,11 @@ class ViewController: UITableViewController {
     
     // MARK: Examples
     func indeterminateExample() {
-        // Show the HUD on the root view (self.view is a scrollable table view and thus not suitable,
-        // as the HUD would move with the content as we scroll).
+        // Show the hub on the root view (self.view is a scrollable table view and thus not suitable,
+        // as the hub would move with the content as we scroll).
         let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
         
-        // Fire off an asynchronous task, giving UIKit the opportunity to redraw wit the HUD added to the
+        // Fire off an asynchronous task, giving UIKit the opportunity to redraw wit the hub added to the
         // view hierarchy.
         DispatchQueue.global(qos: .userInitiated).async {
             self.doSomeWork()
@@ -66,7 +67,23 @@ class ViewController: UITableViewController {
         hub.label?.text = "Loading..."
         
         DispatchQueue.global(qos: .userInitiated).async {
-            // Do something useful in the background and update the HUD periodically.
+            // Do something useful in the background and update the hub periodically.
+            self.doSomeWorkWithProgess()
+            DispatchQueue.main.async {
+                hub.hide(animated: true)
+            }
+        }
+    }
+    
+    func determinateExample() {
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        
+        // Set determinate mode
+        hub.mode = .determinate
+        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
+        hub.progress = 0.5
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Do something useful in the background and update the hub periodically.
             self.doSomeWorkWithProgess()
             DispatchQueue.main.async {
                 hub.hide(animated: true)
@@ -79,6 +96,7 @@ class ViewController: UITableViewController {
     func doSomeWork() {
         sleep(3)
     }
+    
     var canceled = false
     func doSomeWorkWithProgess() {
         var progress: Float = 0.0
