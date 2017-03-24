@@ -568,8 +568,10 @@ public class ProgressHub: UIView {
     }
 #endif
     func updateForCurrentOrientation(animated: Bool) {
-        // TODO: fill
-        print("need to fill updateForCurrentOrientation method.")
+        // Stay in sync with the superview in any case
+        if let superView = self.superview {
+            frame = superView.bounds
+        }
     }
 }
 
