@@ -30,6 +30,8 @@ public class ProgressHub: UIView {
         case fade, zoom, zoomOut, zoomIn
     }
     
+    public static let maxOffset: CGFloat = 1000000.0
+    
     // const
     let defaultPadding: CGFloat = 4.0
     let defaultLabelFontSize: CGFloat = 16.0
@@ -399,8 +401,9 @@ public class ProgressHub: UIView {
                 indicator = customView
                 bezelView?.addSubview(customView!)
             }
-        default:
-            assert(false, "This mode has not be support.")
+        case .text:
+            indicator?.removeFromSuperview()
+            indicator = nil
         }
         
         indicator?.translatesAutoresizingMaskIntoConstraints = false

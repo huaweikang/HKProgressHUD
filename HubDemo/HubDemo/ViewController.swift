@@ -18,7 +18,8 @@ class ViewController: UITableViewController {
         ("Bar determinate mode", #selector(barDeterminateExample)),
         ("Determinate mode", #selector(determinateExample)),
         ("Annular determinate mode", #selector(annularDeterminateExample)),
-        ("Custom view", #selector(customViewExample))
+        ("Custom view", #selector(customViewExample)),
+        ("Text Only", #selector(textExample))
                     ]
 
     override func viewDidLoad() {
@@ -115,6 +116,17 @@ class ViewController: UITableViewController {
         hub.customView = UIImageView(image: #imageLiteral(resourceName: "Checkmark"))
         hub.isSquare = true
         hub.label?.text = NSLocalizedString("Done", comment: "Hub done title")
+        hub.hide(animated: true, afterDelay: 3.0)
+    }
+    
+    func textExample() {
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        
+        // Set the Text mode
+        hub.mode = .text
+        hub.label?.text = NSLocalizedString("Message here!", comment: "Hub message title")
+        // Move to bottom center.
+        hub.offset = CGPoint(x: 0, y: ProgressHub.maxOffset)
         hub.hide(animated: true, afterDelay: 3.0)
     }
     
