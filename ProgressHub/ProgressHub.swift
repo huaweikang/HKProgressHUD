@@ -364,8 +364,6 @@ public class ProgressHub: UIView {
     }
     
     func updateIndicators() {
-        // TODO: Add other type
-        
         switch mode {
         case .indeterminate:
             if indicator as? UIActivityIndicatorView == nil {
