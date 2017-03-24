@@ -215,8 +215,6 @@ class RoundProgressView: CircleProcessView {
 class AnnularProgressView: CircleProcessView {
     // MARK: Drawing
     override func draw(_ rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
-        
         // Draw background
         let lineWidth: CGFloat = 2.0
         let processBackgroundPath = UIBezierPath()
