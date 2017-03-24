@@ -70,7 +70,20 @@ class ViewController: UITableViewController {
         }
     }
     func detailsLabelExample() {
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
         
+        // Set label text
+        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
+        // Set details label text.
+        hub.detailsLabel?.text = NSLocalizedString("Pasing data\n(1/1)", comment: "Hub title")
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.doSomeWork()
+            
+            DispatchQueue.main.async {
+                hub.hide(animated: true)
+            }
+        }
     }
     func windowExample() {
         
