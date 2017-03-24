@@ -379,6 +379,13 @@ public class ProgressHub: UIView {
                 indicator = RoundProgressView()
                 bezelView?.addSubview(indicator!)
             }
+        case .annularDeterminate:
+            if !(indicator is AnnularProgressView) {
+                // Update to annular determinate indicator
+                indicator?.removeFromSuperview()
+                indicator = AnnularProgressView()
+                bezelView?.addSubview(indicator!)
+            }
         default:
             assert(false, "This mode has not be support.")
         }
@@ -407,8 +414,9 @@ public class ProgressHub: UIView {
         } else if let barProgressView = indicator as? BarProgressView {
             barProgressView.progressColor = color
             barProgressView.lineColor = color
-        } else if let roundProgressView = indicator as? RoundProgressView {
-            roundProgressView.progressTintColor = color
+        } else if let circleProgressView = indicator as? CircleProcessView {
+            circleProgressView.progressTintColor = color
+            circleProgressView.backgroundTintColor = color.withAlphaComponent(0.1)
         }
     }
     

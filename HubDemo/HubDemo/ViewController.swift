@@ -15,8 +15,9 @@ class ViewController: UITableViewController {
         ("With label", #selector(labelExample)),
         ("With details label", #selector(detailsLabelExample)),
         ("On window", #selector(windowExample)),
-        ("Bar determinate mode", #selector(bardeterminateExample)),
-        ("Determinate mode", #selector(determinateExample))
+        ("Bar determinate mode", #selector(barDeterminateExample)),
+        ("Determinate mode", #selector(determinateExample)),
+        ("Annular determinate mode", #selector(annularDeterminateExample))
                     ]
 
     override func viewDidLoad() {
@@ -61,7 +62,7 @@ class ViewController: UITableViewController {
         
     }
     
-    func bardeterminateExample() {
+    func barDeterminateExample() {
         let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
         hub.mode = .determinateHorizontalBar
         hub.label?.text = "Loading..."
@@ -81,7 +82,21 @@ class ViewController: UITableViewController {
         // Set determinate mode
         hub.mode = .determinate
         hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
-        hub.progress = 0.5
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Do something useful in the background and update the hub periodically.
+            self.doSomeWorkWithProgess()
+            DispatchQueue.main.async {
+                hub.hide(animated: true)
+            }
+        }
+    }
+    
+    func annularDeterminateExample() {
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        
+        // Set annular determinate mode
+        hub.mode = .annularDeterminate
+        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
         DispatchQueue.global(qos: .userInitiated).async {
             // Do something useful in the background and update the hub periodically.
             self.doSomeWorkWithProgess()

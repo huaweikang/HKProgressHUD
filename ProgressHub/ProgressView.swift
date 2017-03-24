@@ -144,11 +144,20 @@ class BarProgressView: ProgressView {
     }
 }
 
-class RoundProgressView: ProgressView {
+class CircleProcessView: ProgressView {         // base class of Round and Annular viw
     // Indicator progress color, default white
     var progressTintColor: UIColor = UIColor.red {
         didSet {
             if oldValue != progressTintColor {
+                setNeedsDisplay()
+            }
+        }
+    }
+    
+    // Indicator background (non - progress) color, default to translucent white (alpha 0.1)
+    var backgroundTintColor = UIColor(white: 1.0, alpha: 0.1) {
+        didSet {
+            if oldValue != backgroundTintColor {
                 setNeedsDisplay()
             }
         }
@@ -168,11 +177,13 @@ class RoundProgressView: ProgressView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Drawing
+    // MARK: Layout
     override var intrinsicContentSize: CGSize {
         return CGSize(width: 37, height: 37)
     }
-    
+}
+
+class RoundProgressView: CircleProcessView {
     // MARK: Drawing
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
@@ -196,6 +207,34 @@ class RoundProgressView: ProgressView {
         processPath.addArc(withCenter: pathCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         // Ensure that we don't get color overlaping when progressTintColor alpha < 1
         context?.setBlendMode(.copy)
+        progressTintColor.set()
+        processPath.stroke()
+    }
+}
+
+class AnnularProgressView: CircleProcessView {
+    // MARK: Drawing
+    override func draw(_ rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        
+        // Draw background
+        let lineWidth: CGFloat = 2.0
+        let processBackgroundPath = UIBezierPath()
+        processBackgroundPath.lineWidth = lineWidth
+        processBackgroundPath.lineCapStyle = .butt
+        let pathCenter = CGPoint(x: bounds.midX, y: bounds.midY)
+        let radius = (bounds.size.width - lineWidth) / 2.0
+        let startAngle = -(CGFloat.pi / 2)
+        var endAngle = 2 * CGFloat.pi + startAngle
+        processBackgroundPath.addArc(withCenter: pathCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        backgroundTintColor.set()
+        processBackgroundPath.stroke()
+        // Draw progress
+        let processPath = UIBezierPath()
+        processPath.lineCapStyle = .square
+        processPath.lineWidth = lineWidth
+        endAngle = CGFloat(progress * 2 * Float.pi) + startAngle
+        processPath.addArc(withCenter: pathCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         progressTintColor.set()
         processPath.stroke()
     }
