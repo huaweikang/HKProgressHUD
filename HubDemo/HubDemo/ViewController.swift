@@ -86,7 +86,16 @@ class ViewController: UITableViewController {
         }
     }
     func windowExample() {
+        // Cover the entire screen.
+        let hub = ProgressHub.show(addedToView: self.view.window!, animated: true)
         
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.doSomeWork()
+            
+            DispatchQueue.main.async {
+                hub.hide(animated: true)
+            }
+        }
     }
     
     func barDeterminateExample() {
