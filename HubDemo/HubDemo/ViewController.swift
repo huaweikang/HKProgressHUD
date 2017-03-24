@@ -19,7 +19,8 @@ class ViewController: UITableViewController {
         ("Determinate mode", #selector(determinateExample)),
         ("Annular determinate mode", #selector(annularDeterminateExample)),
         ("Custom view", #selector(customViewExample)),
-        ("Text Only", #selector(textExample))
+        ("Text Only", #selector(textExample)),
+        ("With action button", #selector(cancelationExample))
                     ]
 
     override func viewDidLoad() {
@@ -164,6 +165,26 @@ class ViewController: UITableViewController {
         hub.hide(animated: true, afterDelay: 3.0)
     }
     
+    func cancelationExample() {
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        
+        // Set the determinate mode
+        hub.mode = .determinate
+        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
+        
+        // Configure the button
+        hub.button?.setTitle(NSLocalizedString("cancel", comment: "Hub cancel button title"), for: .normal)
+        hub.button?.addTarget(self, action: #selector(cancelWork(sender:)), for: .touchUpInside)
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Do something useful in the background and update the hub periodically.
+            self.doSomeWorkWithProgess()
+            DispatchQueue.main.async {
+                hub.hide(animated: true)
+            }
+        }
+    }
+    
     
     // MARK - Tasks
     func doSomeWork() {
@@ -171,6 +192,10 @@ class ViewController: UITableViewController {
     }
     
     var canceled = false
+    
+    func cancelWork(sender: AnyObject) {
+        self.canceled = true
+    }
     func doSomeWorkWithProgess() {
         var progress: Float = 0.0
         canceled = false
