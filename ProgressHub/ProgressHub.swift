@@ -10,6 +10,16 @@ import UIKit
 import Foundation
 import CoreGraphics
 
+public protocol ProgressHubDelegate {
+    // Called after the Hub was fully hidden from the screen, default not do anything
+    func hudWasHidden(_ hub: ProgressHub)
+}
+
+extension ProgressHubDelegate {
+    func hudWasHidden(_ hub: ProgressHub) {
+    }
+}
+
 public class ProgressHub: UIView {
     
     public enum HudMode {
@@ -59,6 +69,7 @@ public class ProgressHub: UIView {
     public var isDefaultMotionEffectsEnabled = true
     public var minShowTime: TimeInterval = 0.0
     public var completionBlock: (() -> Void)?
+    public var delegate: ProgressHubDelegate?
     public var graceTime: TimeInterval = 0.0
     
     var activityIndicatorColor: UIColor?
@@ -282,7 +293,9 @@ public class ProgressHub: UIView {
             completed()
         }
         
-        // TODO: add progress hub delegate
+        if delegate != nil {
+            delegate?.hudWasHidden(self)
+        }
     }
     
     // MARK: UI
