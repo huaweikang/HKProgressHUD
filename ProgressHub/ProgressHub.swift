@@ -48,7 +48,13 @@ public class ProgressHub: UIView {
     public var progressObject: Progress?
     public var bezelView: ProgressHubBackgroundView?
     public var backgroundView: ProgressHubBackgroundView?
-    public var customView: UIView?
+    public var customView: UIView? {
+        didSet {
+            if(oldValue != customView && mode == .customView) {
+                updateIndicators()
+            }
+        }
+    }
     public var label: UILabel?
     public var detailsLabel: UILabel?
     public var button: UIButton?
@@ -385,6 +391,13 @@ public class ProgressHub: UIView {
                 indicator?.removeFromSuperview()
                 indicator = AnnularProgressView()
                 bezelView?.addSubview(indicator!)
+            }
+        case .customView:
+            if customView != nil && customView !== indicator {
+                // Update custom view indicator
+                indicator?.removeFromSuperview()
+                indicator = customView
+                bezelView?.addSubview(customView!)
             }
         default:
             assert(false, "This mode has not be support.")

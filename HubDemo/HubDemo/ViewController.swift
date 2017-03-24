@@ -17,7 +17,8 @@ class ViewController: UITableViewController {
         ("On window", #selector(windowExample)),
         ("Bar determinate mode", #selector(barDeterminateExample)),
         ("Determinate mode", #selector(determinateExample)),
-        ("Annular determinate mode", #selector(annularDeterminateExample))
+        ("Annular determinate mode", #selector(annularDeterminateExample)),
+        ("Custom view", #selector(customViewExample))
                     ]
 
     override func viewDidLoad() {
@@ -104,6 +105,17 @@ class ViewController: UITableViewController {
                 hub.hide(animated: true)
             }
         }
+    }
+    
+    func customViewExample() {
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        // Set the custom view mode
+        hub.mode = .customView
+        // Set a checkmark
+        hub.customView = UIImageView(image: #imageLiteral(resourceName: "Checkmark"))
+        hub.isSquare = true
+        hub.label?.text = NSLocalizedString("Done", comment: "Hub done title")
+        hub.hide(animated: true, afterDelay: 3.0)
     }
     
     
