@@ -74,7 +74,13 @@ public class ProgressHub: UIView {
             }
         }
     }
-    public var contentColor = UIColor(white: 0, alpha: 0.7)
+    public var contentColor = UIColor(white: 0, alpha: 0.7) {
+        didSet {
+            if (oldValue != contentColor) {
+                updateViews(forColor: contentColor)
+            }
+        }
+    }
     public var animationType: HubAnimation = .fade
     public var offset: CGPoint = CGPoint(x: 0, y: 0)
     public var margin: CGFloat = 20.0

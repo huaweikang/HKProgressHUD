@@ -23,7 +23,8 @@ class ViewController: UITableViewController {
         ("With action button", #selector(cancelationExample)),
         ("Determinate with Progress", #selector(determinateProgressExample)),
         ("Mode swithing", #selector(modeSwitchExample)),
-        ("Dim background", #selector(dimBackgroundExample))
+        ("Dim background", #selector(dimBackgroundExample)),
+        ("Colored", #selector(colorExample))
                     ]
 
     override func viewDidLoad() {
@@ -234,6 +235,21 @@ class ViewController: UITableViewController {
         // Change the background view style and color
         hub.backgroundView?.style = .solidColor
         hub.backgroundView?.color = UIColor(white: 0, alpha: 0.1)
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.doSomeWork()
+            DispatchQueue.main.async {
+                hub.hide(animated: true)
+            }
+        }
+    }
+    
+    func colorExample() {
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        hub.contentColor = UIColor(red: 0, green: 0.6, blue: 0.7, alpha: 1)
+        
+        // Set the label text.
+        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.doSomeWork()
