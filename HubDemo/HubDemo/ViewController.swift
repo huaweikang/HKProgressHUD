@@ -21,7 +21,8 @@ class ViewController: UITableViewController {
         ("Custom view", #selector(customViewExample)),
         ("Text Only", #selector(textExample)),
         ("With action button", #selector(cancelationExample)),
-        ("Determinate with Progress", #selector(determinateProgressExample))
+        ("Determinate with Progress", #selector(determinateProgressExample)),
+        ("Mode swithing", #selector(modeSwitchExample))
                     ]
 
     override func viewDidLoad() {
@@ -209,6 +210,23 @@ class ViewController: UITableViewController {
         }
     }
     
+    func modeSwitchExample() {
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        
+        // Set some text to show the initial status.
+        hub.label?.text = NSLocalizedString("Preparing", comment: "Hub preparing title")
+        // Set min size
+        hub.minSize = CGSize(width: 150, height: 100)
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Do something useful in the background and update the hub periodically.
+            self.doSomeWorkWithMixedProgress()
+            DispatchQueue.main.async {
+                hub.hide(animated: true)
+            }
+        }
+    }
+    
     
     // MARK - Tasks
     func doSomeWork() {
@@ -246,6 +264,34 @@ class ViewController: UITableViewController {
             progress.resignCurrent()
             usleep(50000)
         }
+    }
+    
+    func doSomeWorkWithMixedProgress() {
+        let hub = ProgressHub.hubForView((self.navigationController?.view)!)
+        
+        // Indetermimate mode
+        sleep(2)
+        // Switch to deteminate mode
+        DispatchQueue.main.async {
+            hub?.mode = .determinate
+            hub?.label?.text = NSLocalizedString("Loading", comment: "Hub loading title")
+        }
+        doSomeWorkWithProgess()
+        
+        // Back to indeter mode
+        DispatchQueue.main.async {
+            hub?.mode = .indeterminate
+            hub?.label?.text = NSLocalizedString("Cleaning up...", comment: "Hub cleaning up title")
+        }
+        sleep(2)
+        DispatchQueue.main.sync {
+            let image = #imageLiteral(resourceName: "Checkmark").withRenderingMode(.alwaysTemplate)
+            let imageView = UIImageView(image: image)
+            hub?.customView = imageView
+            hub?.mode = .customView
+            hub?.label?.text = NSLocalizedString("Completed", comment: "Hub completed title")
+        }
+        sleep(2)
     }
 
     
