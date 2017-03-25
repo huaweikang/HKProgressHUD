@@ -22,7 +22,8 @@ class ViewController: UITableViewController {
         ("Text Only", #selector(textExample)),
         ("With action button", #selector(cancelationExample)),
         ("Determinate with Progress", #selector(determinateProgressExample)),
-        ("Mode swithing", #selector(modeSwitchExample))
+        ("Mode swithing", #selector(modeSwitchExample)),
+        ("Dim background", #selector(dimBackgroundExample))
                     ]
 
     override func viewDidLoad() {
@@ -221,6 +222,21 @@ class ViewController: UITableViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             // Do something useful in the background and update the hub periodically.
             self.doSomeWorkWithMixedProgress()
+            DispatchQueue.main.async {
+                hub.hide(animated: true)
+            }
+        }
+    }
+    
+    func dimBackgroundExample() {
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        
+        // Change the background view style and color
+        hub.backgroundView?.style = .solidColor
+        hub.backgroundView?.color = UIColor(white: 0, alpha: 0.1)
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.doSomeWork()
             DispatchQueue.main.async {
                 hub.hide(animated: true)
             }
