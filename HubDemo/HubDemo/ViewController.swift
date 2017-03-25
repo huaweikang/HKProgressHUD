@@ -20,7 +20,8 @@ class ViewController: UITableViewController {
         ("Annular determinate mode", #selector(annularDeterminateExample)),
         ("Custom view", #selector(customViewExample)),
         ("Text Only", #selector(textExample)),
-        ("With action button", #selector(cancelationExample))
+        ("With action button", #selector(cancelationExample)),
+        ("Determinate with Progress", #selector(determinateProgressExample))
                     ]
 
     override func viewDidLoad() {
@@ -185,6 +186,29 @@ class ViewController: UITableViewController {
         }
     }
     
+    func determinateProgressExample() {
+        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        
+        // Set the determinate mode
+        hub.mode = .determinate
+        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
+        
+        // Set up Progress
+        hub.progressObject = Progress(totalUnitCount: 100)
+        
+        // Configure the button
+        hub.button?.setTitle(NSLocalizedString("cancel", comment: "Hub cancel button title"), for: .normal)
+        hub.button?.addTarget(hub.progressObject, action: #selector(Progress.cancel), for: .touchUpInside)
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Do something useful in the background and update the hub periodically.
+            self.doSomeWork(forProgressObject: hub.progressObject!)
+            DispatchQueue.main.async {
+                hub.hide(animated: true)
+            }
+        }
+    }
+    
     
     // MARK - Tasks
     func doSomeWork() {
@@ -196,6 +220,7 @@ class ViewController: UITableViewController {
     func cancelWork(sender: AnyObject) {
         self.canceled = true
     }
+    
     func doSomeWorkWithProgess() {
         var progress: Float = 0.0
         canceled = false
@@ -207,6 +232,18 @@ class ViewController: UITableViewController {
             DispatchQueue.main.async {
                 ProgressHub.hubForView((self.navigationController?.view)!)?.progress = progress
             }
+            usleep(50000)
+        }
+    }
+    
+    func doSomeWork(forProgressObject progress: Progress) {
+        // just increases the progress indicator
+        while progress.fractionCompleted < 1.0 {
+            if progress.isCancelled {
+                break
+            }
+            progress.becomeCurrent(withPendingUnitCount: 1)
+            progress.resignCurrent()
             usleep(50000)
         }
     }

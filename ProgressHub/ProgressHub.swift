@@ -47,7 +47,13 @@ public class ProgressHub: UIView {
             }
         }
     }
-    public var progressObject: Progress?
+    public var progressObject: Progress? {
+        didSet {
+            if(oldValue !== progressObject) {
+                setProgressDisplayLinkEnabled(true)
+            }
+        }
+    }
     public var bezelView: ProgressHubBackgroundView?
     public var backgroundView: ProgressHubBackgroundView?
     public var customView: UIView? {
@@ -93,7 +99,18 @@ public class ProgressHub: UIView {
     var graceTimer: Timer?
     var minShowTimer: Timer?
     var hideDelayTimer: Timer?
-    var progressObjectDisplayLink: CADisplayLink?
+    var progressObjectDisplayLink: CADisplayLink? {
+        willSet {
+            if newValue !== progressObjectDisplayLink {
+                progressObjectDisplayLink?.invalidate()
+            }
+        }
+        didSet {
+            if oldValue !== progressObjectDisplayLink {
+                progressObjectDisplayLink?.add(to: RunLoop.main, forMode: .defaultRunLoopMode)
+            }
+        }
+    }
     
     public class func show(addedToView view: UIView, animated: Bool) -> ProgressHub {
         let hub = ProgressHub(withView: view)
@@ -227,7 +244,7 @@ public class ProgressHub: UIView {
         alpha = 1.0
         
         // Needed in case we hide and re-show with the same Progress object attached.
-        setProgressDiaplayLinkEnabled(true)
+        setProgressDisplayLinkEnabled(true)
         
         if(animation) {
             animateIn(true, withType: animationType, completion: nil)
@@ -289,7 +306,7 @@ public class ProgressHub: UIView {
     func done() {
         // Cancel any scheduled hideDelayed: calls
         hideDelayTimer?.invalidate()
-        setProgressDiaplayLinkEnabled(false)
+        setProgressDisplayLinkEnabled(false)
         
         if (isFinished) {
             alpha = 0
@@ -573,12 +590,12 @@ public class ProgressHub: UIView {
     }
     
     // MARK: Progress
-    func setProgressDiaplayLinkEnabled(_ enabled: Bool) {
+    func setProgressDisplayLinkEnabled(_ enabled: Bool) {
         // We're using CADisplayLink, because Progress can change very quickly and observing it may starve the main thread,
         // so we're refreshing the progress only every frame draw
         if(enabled && (progressObject != nil)) {
             // Only create if not already active.
-            if((progressObjectDisplayLink) != nil) {
+            if(progressObjectDisplayLink == nil) {
                 self.progressObjectDisplayLink = CADisplayLink(target: self, selector: #selector(updateProgressFromProgressObject))
             }
         } else {
