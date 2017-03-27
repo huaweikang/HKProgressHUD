@@ -10,23 +10,23 @@ import UIKit
 import Foundation
 import CoreGraphics
 
-public protocol ProgressHubDelegate {
+public protocol HKProgressHUDDelegate {
     // Called after the Hub was fully hidden from the screen, default not do anything
-    func hudWasHidden(_ hub: ProgressHub)
+    func hudWasHidden(_ hub: HKProgressHUD)
 }
 
-extension ProgressHubDelegate {
-    func hudWasHidden(_ hub: ProgressHub) {
+extension HKProgressHUDDelegate {
+    func hudWasHidden(_ hub: HKProgressHUD) {
     }
 }
 
-public class ProgressHub: UIView {
+public class HKProgressHUD: UIView {
     
     public enum HudMode {
         case indeterminate, determinate, determinateHorizontalBar, annularDeterminate, customView, text
     }
     
-    public enum HubAnimation {
+    public enum HudAnimation {
         case fade, zoom, zoomOut, zoomIn
     }
     
@@ -54,8 +54,8 @@ public class ProgressHub: UIView {
             }
         }
     }
-    public var bezelView: ProgressHubBackgroundView?
-    public var backgroundView: ProgressHubBackgroundView?
+    public var bezelView: ProgressHUDBackgroundView?
+    public var backgroundView: ProgressHUDBackgroundView?
     public var customView: UIView? {
         didSet {
             if(oldValue != customView && mode == .customView) {
@@ -81,7 +81,7 @@ public class ProgressHub: UIView {
             }
         }
     }
-    public var animationType: HubAnimation = .fade
+    public var animationType: HudAnimation = .fade
     public var offset: CGPoint = CGPoint(x: 0, y: 0)
     public var margin: CGFloat = 20.0
     public var minSize:CGSize = CGSize.zero
@@ -89,7 +89,7 @@ public class ProgressHub: UIView {
     public var isDefaultMotionEffectsEnabled = true
     public var minShowTime: TimeInterval = 0.0
     public var completionBlock: (() -> Void)?
-    public var delegate: ProgressHubDelegate?
+    public var delegate: HKProgressHUDDelegate?
     public var graceTime: TimeInterval = 0.0
     
     var activityIndicatorColor: UIColor?
@@ -118,8 +118,8 @@ public class ProgressHub: UIView {
         }
     }
     
-    public class func show(addedToView view: UIView, animated: Bool) -> ProgressHub {
-        let hub = ProgressHub(withView: view)
+    public class func show(addedToView view: UIView, animated: Bool) -> HKProgressHUD {
+        let hub = HKProgressHUD(withView: view)
         hub.removeFromSuperViewOnHide = true
         view.addSubview(hub)
         hub.show(animated: animated)
@@ -136,11 +136,11 @@ public class ProgressHub: UIView {
         return false
     }
     
-    public class func hubForView(_ view: UIView) -> ProgressHub? {
+    public class func hubForView(_ view: UIView) -> HKProgressHUD? {
         let subviews = view.subviews.reversed()
         for subview in subviews {
-            if (subview is ProgressHub) {
-                return subview as? ProgressHub
+            if (subview is HKProgressHUD) {
+                return subview as? HKProgressHUD
             }
         }
         
@@ -274,7 +274,7 @@ public class ProgressHub: UIView {
         }
     }
     
-    func animateIn(_ animatingIn: Bool, withType: HubAnimation, completion: ((Bool) -> Void)?) {
+    func animateIn(_ animatingIn: Bool, withType: HudAnimation, completion: ((Bool) -> Void)?) {
         // Automatically determine the correct zoom animation type
         var type = withType
         if (type == .zoom) {
@@ -333,14 +333,14 @@ public class ProgressHub: UIView {
     func setupViews() {
         let defaultColor = contentColor
         
-        backgroundView = ProgressHubBackgroundView(frame: self.bounds)
+        backgroundView = ProgressHUDBackgroundView(frame: self.bounds)
         backgroundView?.style = .solidColor
         backgroundView?.backgroundColor = UIColor.clear
         backgroundView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         backgroundView?.alpha = 0
         addSubview(backgroundView!)
         
-        bezelView = ProgressHubBackgroundView()
+        bezelView = ProgressHUDBackgroundView()
         bezelView?.translatesAutoresizingMaskIntoConstraints = false
         bezelView?.layer.cornerRadius = 5
         bezelView?.alpha = 0
@@ -363,7 +363,7 @@ public class ProgressHub: UIView {
         detailsLabel?.isOpaque = false
         detailsLabel?.backgroundColor = UIColor.clear
         
-        button = ProgressHubRoundedButton()
+        button = ProgressHUDRoundedButton()
         button?.titleLabel?.textAlignment = .center
         button?.titleLabel?.font = UIFont.boldSystemFont(ofSize: defaultDetailsLabelFontSize)
         button?.setTitleColor(defaultColor, for: .normal)
@@ -643,7 +643,7 @@ public class ProgressHub: UIView {
     }
 }
 
-public class ProgressHubBackgroundView: UIView {
+public class ProgressHUDBackgroundView: UIView {
     public enum BackgroundStyle {
         case solidColor, blur
     }
@@ -708,7 +708,7 @@ public class ProgressHubBackgroundView: UIView {
     }
 }
 
-class ProgressHubRoundedButton: UIButton {
+class ProgressHUDRoundedButton: UIButton {
     // MARK: Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)

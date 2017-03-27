@@ -12,9 +12,9 @@
 		3D6ACEB41E80D6BD0015CFF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6ACEB21E80D6BD0015CFF9 /* Main.storyboard */; };
 		3D6ACEB61E80D6BD0015CFF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D6ACEB51E80D6BD0015CFF9 /* Assets.xcassets */; };
 		3D6ACEB91E80D6BD0015CFF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6ACEB71E80D6BD0015CFF9 /* LaunchScreen.storyboard */; };
-		3D6ACEC41E80D6BE0015CFF9 /* HubDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACEC31E80D6BE0015CFF9 /* HubDemoTests.swift */; };
-		3D6ACED01E80DC420015CFF9 /* ProgressHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACECE1E80DC420015CFF9 /* ProgressHub.swift */; };
+		3D6ACEC41E80D6BE0015CFF9 /* HudDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACEC31E80D6BE0015CFF9 /* HudDemoTests.swift */; };
 		3D6ACED11E80DC420015CFF9 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACECF1E80DC420015CFF9 /* ProgressView.swift */; };
+		3DE635D11E88BFBB009F591B /* HKProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE635D01E88BFBB009F591B /* HKProgressHUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +36,10 @@
 		3D6ACEB81E80D6BD0015CFF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D6ACEBA1E80D6BD0015CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D6ACEBF1E80D6BE0015CFF9 /* HudDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HudDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D6ACEC31E80D6BE0015CFF9 /* HubDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubDemoTests.swift; sourceTree = "<group>"; };
+		3D6ACEC31E80D6BE0015CFF9 /* HudDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudDemoTests.swift; sourceTree = "<group>"; };
 		3D6ACEC51E80D6BE0015CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D6ACECE1E80DC420015CFF9 /* ProgressHub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressHub.swift; path = ../ProgressHub/ProgressHub.swift; sourceTree = "<group>"; };
 		3D6ACECF1E80DC420015CFF9 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressView.swift; path = ../ProgressHub/ProgressView.swift; sourceTree = "<group>"; };
+		3DE635D01E88BFBB009F591B /* HKProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HKProgressHUD.swift; path = ../ProgressHub/HKProgressHUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,7 @@
 		3D6ACEC21E80D6BE0015CFF9 /* HudDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				3D6ACEC31E80D6BE0015CFF9 /* HubDemoTests.swift */,
+				3D6ACEC31E80D6BE0015CFF9 /* HudDemoTests.swift */,
 				3D6ACEC51E80D6BE0015CFF9 /* Info.plist */,
 			);
 			name = HudDemoTests;
@@ -106,7 +106,7 @@
 		3D6ACED21E80DC4A0015CFF9 /* ProgressHud */ = {
 			isa = PBXGroup;
 			children = (
-				3D6ACECE1E80DC420015CFF9 /* ProgressHub.swift */,
+				3DE635D01E88BFBB009F591B /* HKProgressHUD.swift */,
 				3D6ACECF1E80DC420015CFF9 /* ProgressView.swift */,
 			);
 			name = ProgressHud;
@@ -218,8 +218,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D6ACEB11E80D6BD0015CFF9 /* ViewController.swift in Sources */,
+				3DE635D11E88BFBB009F591B /* HKProgressHUD.swift in Sources */,
 				3D6ACED11E80DC420015CFF9 /* ProgressView.swift in Sources */,
-				3D6ACED01E80DC420015CFF9 /* ProgressHub.swift in Sources */,
 				3D6ACEAF1E80D6BD0015CFF9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,7 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D6ACEC41E80D6BE0015CFF9 /* HubDemoTests.swift in Sources */,
+				3D6ACEC41E80D6BE0015CFF9 /* HudDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

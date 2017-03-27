@@ -47,7 +47,7 @@ class ViewController: UITableViewController {
     func indeterminateExample() {
         // Show the hub on the root view (self.view is a scrollable table view and thus not suitable,
         // as the hub would move with the content as we scroll).
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Fire off an asynchronous task, giving UIKit the opportunity to redraw wit the hub added to the
         // view hierarchy.
@@ -60,7 +60,7 @@ class ViewController: UITableViewController {
         }
     }
     func labelExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set label text
         hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
@@ -75,7 +75,7 @@ class ViewController: UITableViewController {
         }
     }
     func detailsLabelExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set label text
         hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
@@ -92,7 +92,7 @@ class ViewController: UITableViewController {
     }
     func windowExample() {
         // Cover the entire screen.
-        let hub = ProgressHub.show(addedToView: self.view.window!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: self.view.window!, animated: true)
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.doSomeWork()
@@ -104,7 +104,7 @@ class ViewController: UITableViewController {
     }
     
     func barDeterminateExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         hub.mode = .determinateHorizontalBar
         hub.label?.text = "Loading..."
         
@@ -118,7 +118,7 @@ class ViewController: UITableViewController {
     }
     
     func determinateExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set determinate mode
         hub.mode = .determinate
@@ -133,7 +133,7 @@ class ViewController: UITableViewController {
     }
     
     func annularDeterminateExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set annular determinate mode
         hub.mode = .annularDeterminate
@@ -148,7 +148,7 @@ class ViewController: UITableViewController {
     }
     
     func customViewExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         // Set the custom view mode
         hub.mode = .customView
         // Set a checkmark
@@ -159,18 +159,18 @@ class ViewController: UITableViewController {
     }
     
     func textExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set the Text mode
         hub.mode = .text
         hub.label?.text = NSLocalizedString("Message here!", comment: "Hub message title")
         // Move to bottom center.
-        hub.offset = CGPoint(x: 0, y: ProgressHub.maxOffset)
+        hub.offset = CGPoint(x: 0, y: HKProgressHUD.maxOffset)
         hub.hide(animated: true, afterDelay: 3.0)
     }
     
     func cancelationExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set the determinate mode
         hub.mode = .determinate
@@ -190,7 +190,7 @@ class ViewController: UITableViewController {
     }
     
     func determinateProgressExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set the determinate mode
         hub.mode = .determinate
@@ -213,7 +213,7 @@ class ViewController: UITableViewController {
     }
     
     func modeSwitchExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set some text to show the initial status.
         hub.label?.text = NSLocalizedString("Preparing", comment: "Hub preparing title")
@@ -230,7 +230,7 @@ class ViewController: UITableViewController {
     }
     
     func dimBackgroundExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Change the background view style and color
         hub.backgroundView?.style = .solidColor
@@ -245,7 +245,7 @@ class ViewController: UITableViewController {
     }
     
     func colorExample() {
-        let hub = ProgressHub.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         hub.contentColor = UIColor(red: 0, green: 0.6, blue: 0.7, alpha: 1)
         
         // Set the label text.
@@ -280,7 +280,7 @@ class ViewController: UITableViewController {
             }
             progress += 0.01
             DispatchQueue.main.async {
-                ProgressHub.hubForView((self.navigationController?.view)!)?.progress = progress
+                HKProgressHUD.hubForView((self.navigationController?.view)!)?.progress = progress
             }
             usleep(50000)
         }
@@ -299,7 +299,7 @@ class ViewController: UITableViewController {
     }
     
     func doSomeWorkWithMixedProgress() {
-        let hub = ProgressHub.hubForView((self.navigationController?.view)!)
+        let hub = HKProgressHUD.hubForView((self.navigationController?.view)!)
         
         // Indetermimate mode
         sleep(2)
