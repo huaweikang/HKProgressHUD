@@ -61,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				3D6ACE5C1E7F89190015CFF9 /* ProgressHUD */,
-				3D6ACE671E7F89190015CFF9 /* ProgressHUDsts */,
+				3D6ACE671E7F89190015CFF9 /* ProgressHUDtests */,
 				3D6ACE5B1E7F89190015CFF9 /* Products */,
 				3D6ACE9B1E7F90DD0015CFF9 /* Frameworks */,
 			);
@@ -88,13 +88,13 @@
 			path = ProgressHub;
 			sourceTree = "<group>";
 		};
-		3D6ACE671E7F89190015CFF9 /* ProgressHUDsts */ = {
+		3D6ACE671E7F89190015CFF9 /* ProgressHUDtests */ = {
 			isa = PBXGroup;
 			children = (
 				3D6ACE681E7F89190015CFF9 /* ProgressHubTests.swift */,
 				3D6ACE6A1E7F89190015CFF9 /* Info.plist */,
 			);
-			name = ProgressHUDsts;
+			name = ProgressHUDtests;
 			path = ProgressHubTests;
 			sourceTree = "<group>";
 		};
