@@ -64,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				3D6ACEAD1E80D6BD0015CFF9 /* HudDemo */,
-				3D6ACED21E80DC4A0015CFF9 /* ProgressHud */,
+				3D6ACED21E80DC4A0015CFF9 /* ProgressHUD */,
 				3D6ACEC21E80D6BE0015CFF9 /* HudDemoTests */,
 				3D6ACEAC1E80D6BD0015CFF9 /* Products */,
 			);
@@ -103,13 +103,13 @@
 			path = HubDemoTests;
 			sourceTree = "<group>";
 		};
-		3D6ACED21E80DC4A0015CFF9 /* ProgressHud */ = {
+		3D6ACED21E80DC4A0015CFF9 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
 				3DE635D01E88BFBB009F591B /* HKProgressHUD.swift */,
 				3D6ACECF1E80DC420015CFF9 /* ProgressView.swift */,
 			);
-			name = ProgressHud;
+			name = ProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
