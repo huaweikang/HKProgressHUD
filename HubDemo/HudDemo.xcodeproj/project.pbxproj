@@ -167,7 +167,7 @@
 					};
 					3D6ACEBE1E80D6BE0015CFF9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6389HTN5HM;
+						DevelopmentTeam = 5LZ6K24W57;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 3D6ACEAA1E80D6BD0015CFF9;
 					};
@@ -386,7 +386,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 6389HTN5HM;
+				DEVELOPMENT_TEAM = 5LZ6K24W57;
 				INFOPLIST_FILE = HubDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HubDemoTests;
@@ -401,7 +401,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 6389HTN5HM;
+				DEVELOPMENT_TEAM = 5LZ6K24W57;
 				INFOPLIST_FILE = HubDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HubDemoTests;
