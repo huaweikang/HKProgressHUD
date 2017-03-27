@@ -7,28 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D6ACE641E7F89190015CFF9 /* HKProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6ACE5A1E7F89190015CFF9 /* HKProgressHUD.framework */; };
 		3D6ACE6B1E7F89190015CFF9 /* HKProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D6ACE5D1E7F89190015CFF9 /* HKProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3D6ACE9D1E7F90DE0015CFF9 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6ACE9C1E7F90DE0015CFF9 /* Quick.framework */; };
 		3D6ACE9F1E7FA8D90015CFF9 /* HKProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACE9E1E7FA8D90015CFF9 /* HKProgressHUD.swift */; };
 		3D6ACEA11E800CF90015CFF9 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACEA01E800CF90015CFF9 /* ProgressView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3D6ACE651E7F89190015CFF9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3D6ACE511E7F89190015CFF9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3D6ACE591E7F89190015CFF9;
-			remoteInfo = ProgressHub;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3D6ACE5A1E7F89190015CFF9 /* HKProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HKProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6ACE5D1E7F89190015CFF9 /* HKProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKProgressHUD.h; sourceTree = "<group>"; };
 		3D6ACE5E1E7F89190015CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D6ACE631E7F89190015CFF9 /* HKProgressHUDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HKProgressHUDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6ACE9C1E7F90DE0015CFF9 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Carthage/Checkouts/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
 		3D6ACE9E1E7FA8D90015CFF9 /* HKProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKProgressHUD.swift; sourceTree = "<group>"; };
 		3D6ACEA01E800CF90015CFF9 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -39,15 +26,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D6ACE601E7F89190015CFF9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3D6ACE9D1E7F90DE0015CFF9 /* Quick.framework in Frameworks */,
-				3D6ACE641E7F89190015CFF9 /* HKProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				3D6ACE5A1E7F89190015CFF9 /* HKProgressHUD.framework */,
-				3D6ACE631E7F89190015CFF9 /* HKProgressHUDTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,24 +101,6 @@
 			productReference = 3D6ACE5A1E7F89190015CFF9 /* HKProgressHUD.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		3D6ACE621E7F89190015CFF9 /* HKProgressHUDTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3D6ACE711E7F89190015CFF9 /* Build configuration list for PBXNativeTarget "HKProgressHUDTests" */;
-			buildPhases = (
-				3D6ACE5F1E7F89190015CFF9 /* Sources */,
-				3D6ACE601E7F89190015CFF9 /* Frameworks */,
-				3D6ACE611E7F89190015CFF9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3D6ACE661E7F89190015CFF9 /* PBXTargetDependency */,
-			);
-			name = HKProgressHUDTests;
-			productName = ProgressHubTests;
-			productReference = 3D6ACE631E7F89190015CFF9 /* HKProgressHUDTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -156,11 +115,6 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 6389HTN5HM;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
-					};
-					3D6ACE621E7F89190015CFF9 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6389HTN5HM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -178,20 +132,12 @@
 			projectRoot = "";
 			targets = (
 				3D6ACE591E7F89190015CFF9 /* HKProgressHUD */,
-				3D6ACE621E7F89190015CFF9 /* HKProgressHUDTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3D6ACE581E7F89190015CFF9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D6ACE611E7F89190015CFF9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -210,22 +156,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3D6ACE5F1E7F89190015CFF9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3D6ACE661E7F89190015CFF9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3D6ACE591E7F89190015CFF9 /* HKProgressHUD */;
-			targetProxy = 3D6ACE651E7F89190015CFF9 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3D6ACE6C1E7F89190015CFF9 /* Debug */ = {
@@ -368,40 +299,6 @@
 			};
 			name = Release;
 		};
-		3D6ACE721E7F89190015CFF9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 6389HTN5HM;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Quick/build/Debug-iphoneos",
-				);
-				INFOPLIST_FILE = ProgressHubTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.ProgressHubTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		3D6ACE731E7F89190015CFF9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 6389HTN5HM;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Quick/build/Debug-iphoneos",
-				);
-				INFOPLIST_FILE = ProgressHubTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.ProgressHubTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -419,15 +316,6 @@
 			buildConfigurations = (
 				3D6ACE6F1E7F89190015CFF9 /* Debug */,
 				3D6ACE701E7F89190015CFF9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3D6ACE711E7F89190015CFF9 /* Build configuration list for PBXNativeTarget "HKProgressHUDTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3D6ACE721E7F89190015CFF9 /* Debug */,
-				3D6ACE731E7F89190015CFF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
