@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3D6ACE641E7F89190015CFF9 /* HKProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6ACE5A1E7F89190015CFF9 /* HKProgressHUD.framework */; };
-		3D6ACE691E7F89190015CFF9 /* ProgressHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACE681E7F89190015CFF9 /* ProgressHubTests.swift */; };
 		3D6ACE6B1E7F89190015CFF9 /* HKProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D6ACE5D1E7F89190015CFF9 /* HKProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D6ACE9D1E7F90DE0015CFF9 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6ACE9C1E7F90DE0015CFF9 /* Quick.framework */; };
 		3D6ACE9F1E7FA8D90015CFF9 /* HKProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACE9E1E7FA8D90015CFF9 /* HKProgressHUD.swift */; };
@@ -30,8 +29,6 @@
 		3D6ACE5D1E7F89190015CFF9 /* HKProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKProgressHUD.h; sourceTree = "<group>"; };
 		3D6ACE5E1E7F89190015CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D6ACE631E7F89190015CFF9 /* HKProgressHUDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HKProgressHUDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D6ACE681E7F89190015CFF9 /* ProgressHubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHubTests.swift; sourceTree = "<group>"; };
-		3D6ACE6A1E7F89190015CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D6ACE9C1E7F90DE0015CFF9 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Carthage/Checkouts/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
 		3D6ACE9E1E7FA8D90015CFF9 /* HKProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKProgressHUD.swift; sourceTree = "<group>"; };
 		3D6ACEA01E800CF90015CFF9 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -61,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				3D6ACE5C1E7F89190015CFF9 /* ProgressHUD */,
-				3D6ACE671E7F89190015CFF9 /* ProgressHUDtests */,
 				3D6ACE5B1E7F89190015CFF9 /* Products */,
 				3D6ACE9B1E7F90DD0015CFF9 /* Frameworks */,
 			);
@@ -86,16 +82,6 @@
 			);
 			name = ProgressHUD;
 			path = ProgressHub;
-			sourceTree = "<group>";
-		};
-		3D6ACE671E7F89190015CFF9 /* ProgressHUDtests */ = {
-			isa = PBXGroup;
-			children = (
-				3D6ACE681E7F89190015CFF9 /* ProgressHubTests.swift */,
-				3D6ACE6A1E7F89190015CFF9 /* Info.plist */,
-			);
-			name = ProgressHUDtests;
-			path = ProgressHubTests;
 			sourceTree = "<group>";
 		};
 		3D6ACE9B1E7F90DD0015CFF9 /* Frameworks */ = {
@@ -228,7 +214,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D6ACE691E7F89190015CFF9 /* ProgressHubTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
