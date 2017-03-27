@@ -63,9 +63,9 @@
 		3D6ACEA21E80D6BD0015CFF9 = {
 			isa = PBXGroup;
 			children = (
-				3D6ACEAD1E80D6BD0015CFF9 /* HubDemo */,
-				3D6ACED21E80DC4A0015CFF9 /* ProgressHub */,
-				3D6ACEC21E80D6BE0015CFF9 /* HubDemoTests */,
+				3D6ACEAD1E80D6BD0015CFF9 /* HudDemo */,
+				3D6ACED21E80DC4A0015CFF9 /* ProgressHud */,
+				3D6ACEC21E80D6BE0015CFF9 /* HudDemoTests */,
 				3D6ACEAC1E80D6BD0015CFF9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,7 +79,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3D6ACEAD1E80D6BD0015CFF9 /* HubDemo */ = {
+		3D6ACEAD1E80D6BD0015CFF9 /* HudDemo */ = {
 			isa = PBXGroup;
 			children = (
 				3D6ACEAE1E80D6BD0015CFF9 /* AppDelegate.swift */,
@@ -89,25 +89,27 @@
 				3D6ACEB71E80D6BD0015CFF9 /* LaunchScreen.storyboard */,
 				3D6ACEBA1E80D6BD0015CFF9 /* Info.plist */,
 			);
+			name = HudDemo;
 			path = HubDemo;
 			sourceTree = "<group>";
 		};
-		3D6ACEC21E80D6BE0015CFF9 /* HubDemoTests */ = {
+		3D6ACEC21E80D6BE0015CFF9 /* HudDemoTests */ = {
 			isa = PBXGroup;
 			children = (
 				3D6ACEC31E80D6BE0015CFF9 /* HubDemoTests.swift */,
 				3D6ACEC51E80D6BE0015CFF9 /* Info.plist */,
 			);
+			name = HudDemoTests;
 			path = HubDemoTests;
 			sourceTree = "<group>";
 		};
-		3D6ACED21E80DC4A0015CFF9 /* ProgressHub */ = {
+		3D6ACED21E80DC4A0015CFF9 /* ProgressHud */ = {
 			isa = PBXGroup;
 			children = (
 				3D6ACECE1E80DC420015CFF9 /* ProgressHub.swift */,
 				3D6ACECF1E80DC420015CFF9 /* ProgressView.swift */,
 			);
-			name = ProgressHub;
+			name = ProgressHud;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
