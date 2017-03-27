@@ -224,7 +224,7 @@ public class HKProgressHUD: UIView {
     // MARK: Timer callbacks
     func handleGraceTimer(_ timer: Timer) {
         // Show the HUD only if the task is still running
-        if(isFinished) {
+        if(!isFinished) {
             showUsingAnimation(isUseAnimation!)
         }
     }
