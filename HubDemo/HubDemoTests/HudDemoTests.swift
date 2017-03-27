@@ -55,7 +55,7 @@ class HudDemoTests: XCTestCase, HKProgressHUDDelegate {
         let rootViewController = UIApplication.shared.keyWindow?.rootViewController
         let rootView = rootViewController?.view
         
-        self.hideExpectation = expectation(description: "The hubWasHidden delegate should have been called.")
+        self.hideExpectation = expectation(description: "The hudWasHidden delegate should have been called.")
         let hud = HKProgressHUD.show(addedToView: rootView!, animated: true)
         hud.delegate = self
         
@@ -67,8 +67,8 @@ class HudDemoTests: XCTestCase, HKProgressHUDDelegate {
         
         XCTAssertTrue(rootView!.subviews.contains(hud), "hud should be part of root view hierarthy.")
         XCTAssertTrue(hud.alpha == 1.0, "hud should still be visible.")
-        XCTAssertTrue(hud.superview === rootView, "hub should be added to th view.")
-        XCTAssertTrue(hud.bezelView!.alpha == 0, "hub bezel should be animated out.")
+        XCTAssertTrue(hud.superview === rootView, "hud should be added to th view.")
+        XCTAssertTrue(hud.bezelView!.alpha == 0, "hud bezel should be animated out.")
         XCTAssertTrue((hud.bezelView?.layer.animationKeys()?.contains("opacity"))!, "opacity should be animated.")
         
         hideChecks = {
@@ -82,7 +82,7 @@ class HudDemoTests: XCTestCase, HKProgressHUDDelegate {
     func testCompletionBlock() {
         let rootViewController = UIApplication.shared.keyWindow?.rootViewController
         let rootView = rootViewController?.view
-        self.hideExpectation = expectation(description: "The hubWasHidden delegate should have been called.")
+        self.hideExpectation = expectation(description: "The hudWasHidden delegate should have been called.")
         let completionExpection = expectation(description: "completionBlock: should have been called.")
         
         let hud = HKProgressHUD.show(addedToView: rootView!, animated: true)
@@ -100,7 +100,7 @@ class HudDemoTests: XCTestCase, HKProgressHUDDelegate {
     func testDelayedHide() {
         let rootViewController = UIApplication.shared.keyWindow?.rootViewController
         let rootView = rootViewController?.view
-        self.hideExpectation = expectation(description: "The hubWasHidden delegate should have been called.")
+        self.hideExpectation = expectation(description: "The hudWasHidden delegate should have been called.")
         
         let hud = HKProgressHUD.show(addedToView: rootView!, animated: false)
         hud.delegate = self
@@ -156,7 +156,7 @@ class HudDemoTests: XCTestCase, HKProgressHUDDelegate {
         
         let hideCheckExpectation = expectation(description: "Hide check")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(3), execute: {
-            // after grace time passes, hub should not be shown
+            // after grace time passes, hud should not be shown
             self.checkhudHiddenAndRemoved(hud, rootView: rootView!)
             hideCheckExpectation.fulfill()
         })
@@ -169,7 +169,7 @@ class HudDemoTests: XCTestCase, HKProgressHUDDelegate {
         let rootViewController = UIApplication.shared.keyWindow?.rootViewController
         let rootView = rootViewController?.view
         
-        let hideExpectation = expectation(description: "hub should have been hidden.")
+        let hideExpectation = expectation(description: "hud should have been hidden.")
         
         let hud = HKProgressHUD(withView: rootView!)
         rootView?.addSubview(hud)
@@ -195,7 +195,7 @@ class HudDemoTests: XCTestCase, HKProgressHUDDelegate {
     func testMinShowTime() {
         let rootViewController = UIApplication.shared.keyWindow?.rootViewController
         let rootView = rootViewController?.view
-        self.hideExpectation = expectation(description: "The hubWasHidden delegate should have been called.")
+        self.hideExpectation = expectation(description: "The hudWasHidden delegate should have been called.")
         
         let hud = HKProgressHUD(withView: rootView!)
         rootView?.addSubview(hud)
@@ -226,7 +226,7 @@ class HudDemoTests: XCTestCase, HKProgressHUDDelegate {
     func testGraceTime() {
         let rootViewController = UIApplication.shared.keyWindow?.rootViewController
         let rootView = rootViewController?.view
-        self.hideExpectation = expectation(description: "The hubWasHidden delegate should have been called.")
+        self.hideExpectation = expectation(description: "The hudWasHidden delegate should have been called.")
         
         let hud = HKProgressHUD(withView: rootView!)
         hud.delegate = self
@@ -261,7 +261,45 @@ class HudDemoTests: XCTestCase, HKProgressHUDDelegate {
         checkhudHiddenAndRemoved(hud, rootView: rootView!)
     }
     
-    
+    func testHideBeforeGraceTimeElapsed() {
+        let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        let rootView = rootViewController?.view
+        self.hideExpectation = expectation(description: "The hudWasHidden delegate should have been called.")
+        
+        let hud = HKProgressHUD(withView: rootView!)
+        hud.delegate = self
+        hud.removeFromSuperViewOnHide = true
+        hud.graceTime = 2.0
+        rootView?.addSubview(hud)
+        hud.show(animated: true)
+        
+        XCTAssertNotNil(hud, "hud should be created.")
+        
+        // The HUD should be added to the view but still hidden
+        XCTAssertTrue(hud.superview === rootView, "The hud should be added to the view.")
+        XCTAssertEqual(hud.alpha, 0, "The HUD should not be visible.")
+        XCTAssertFalse(hud.isHidden, "The HUD should be visible.")
+        XCTAssertEqual(hud.bezelView?.alpha, 0, "The HUD should not be visible.")
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(1), execute: {
+            // The HUD should be added to the view but still hidden
+            XCTAssertTrue(hud.superview === rootView, "The hud should be added to the view.")
+            XCTAssertEqual(hud.alpha, 0, "The HUD should not be visible.")
+            XCTAssertFalse(hud.isHidden, "The HUD should be visible.")
+            XCTAssertEqual(hud.bezelView?.alpha, 0, "The HUD should not be visible.")
+            hud.hide(animated: true)
+        })
+        
+        let hideCheckExpectation = expectation(description: "Hide check")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(3), execute: {
+            // after grace time passes, hud should not be shown
+            self.checkhudHiddenAndRemoved(hud, rootView: rootView!)
+            hideCheckExpectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 5.0, handler: nil)
+        checkhudHiddenAndRemoved(hud, rootView: rootView!)
+    }
     
     // MARK: HKProgressHUD delegate
     func hudWasHidden(_ hud: HKProgressHUD) {
