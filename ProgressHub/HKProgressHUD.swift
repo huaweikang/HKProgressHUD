@@ -1,6 +1,6 @@
 //
-//  ProgressHub.swift
-//  ProgressHub
+//  HKProgressHUD.swift
+//  HKProgressHUD
 //
 //  Created by kang huawei on 2017/3/20.
 //  Copyright © 2017年 huaweikang. All rights reserved.
@@ -11,12 +11,12 @@ import Foundation
 import CoreGraphics
 
 public protocol HKProgressHUDDelegate {
-    // Called after the Hub was fully hidden from the screen, default not do anything
-    func hudWasHidden(_ hub: HKProgressHUD)
+    // Called after the hud was fully hidden from the screen, default not do anything
+    func hudWasHidden(_ hud: HKProgressHUD)
 }
 
 extension HKProgressHUDDelegate {
-    func hudWasHidden(_ hub: HKProgressHUD) {
+    func hudWasHidden(_ hud: HKProgressHUD) {
     }
 }
 
@@ -85,7 +85,7 @@ public class HKProgressHUD: UIView {
     public var offset: CGPoint = CGPoint(x: 0, y: 0)
     public var margin: CGFloat = 20.0
     public var minSize:CGSize = CGSize.zero
-    public var isSquare = false         // force the hub dimensions to be equal if possible
+    public var isSquare = false         // force the hud dimensions to be equal if possible
     public var isDefaultMotionEffectsEnabled = true
     public var minShowTime: TimeInterval = 0.0
     public var completionBlock: (() -> Void)?
@@ -119,24 +119,24 @@ public class HKProgressHUD: UIView {
     }
     
     public class func show(addedToView view: UIView, animated: Bool) -> HKProgressHUD {
-        let hub = HKProgressHUD(withView: view)
-        hub.removeFromSuperViewOnHide = true
-        view.addSubview(hub)
-        hub.show(animated: animated)
-        return hub;
+        let hud = HKProgressHUD(withView: view)
+        hud.removeFromSuperViewOnHide = true
+        view.addSubview(hud)
+        hud.show(animated: animated)
+        return hud;
     }
     
     public class func hide(addedToView view: UIView, animated: Bool) -> Bool {
-        let hub = hubForView(view)
-        if (hub != nil) {
-            hub?.removeFromSuperViewOnHide = true
-            hub?.hide(animated: animated)
+        let hud = hudForView(view)
+        if (hud != nil) {
+            hud?.removeFromSuperViewOnHide = true
+            hud?.hide(animated: animated)
             return true
         }
         return false
     }
     
-    public class func hubForView(_ view: UIView) -> HKProgressHUD? {
+    public class func hudForView(_ view: UIView) -> HKProgressHUD? {
         let subviews = view.subviews.reversed()
         for subview in subviews {
             if (subview is HKProgressHUD) {
@@ -181,7 +181,7 @@ public class HKProgressHUD: UIView {
     
     // MARK: Show & Hide
     func show(animated: Bool) {
-        assert(Thread.isMainThread, "ProgressHub needs to be accessed on the main thread.")
+        assert(Thread.isMainThread, "Progresshud needs to be accessed on the main thread.")
         minShowTimer?.invalidate()
         isUseAnimation = animated
         isFinished = false
@@ -196,7 +196,7 @@ public class HKProgressHUD: UIView {
     }
     
     func hide(animated: Bool) {
-        assert(Thread.isMainThread, "ProgressHub needs to be accessed on the main thread.")
+        assert(Thread.isMainThread, "Progresshud needs to be accessed on the main thread.")
         graceTimer?.invalidate()
         isUseAnimation = animated
         isFinished = true

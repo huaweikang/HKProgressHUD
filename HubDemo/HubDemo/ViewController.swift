@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  HubDemo
+//  hudDemo
 //
 //  Created by kang huawei on 2017/3/21.
 //  Copyright © 2017年 huaweikang. All rights reserved.
@@ -39,222 +39,222 @@ class ViewController: UITableViewController {
     }
 
     func setUp() {
-        self.title = "Hub Test"
+        self.title = "HUD Test"
         
     }
     
     // MARK: Examples
     func indeterminateExample() {
-        // Show the hub on the root view (self.view is a scrollable table view and thus not suitable,
-        // as the hub would move with the content as we scroll).
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        // Show the hud on the root view (self.view is a scrollable table view and thus not suitable,
+        // as the hud would move with the content as we scroll).
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
-        // Fire off an asynchronous task, giving UIKit the opportunity to redraw wit the hub added to the
+        // Fire off an asynchronous task, giving UIKit the opportunity to redraw wit the hud added to the
         // view hierarchy.
         DispatchQueue.global(qos: .userInitiated).async {
             self.doSomeWork()
             
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
     func labelExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set label text
-        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
+        hud.label?.text = NSLocalizedString("Loading...", comment: "hud loading title")
         // You can set other lable properties
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.doSomeWork()
             
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
     func detailsLabelExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set label text
-        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
+        hud.label?.text = NSLocalizedString("Loading...", comment: "hud loading title")
         // Set details label text.
-        hub.detailsLabel?.text = NSLocalizedString("Pasing data\n(1/1)", comment: "Hub title")
+        hud.detailsLabel?.text = NSLocalizedString("Pasing data\n(1/1)", comment: "hud title")
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.doSomeWork()
             
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
     func windowExample() {
         // Cover the entire screen.
-        let hub = HKProgressHUD.show(addedToView: self.view.window!, animated: true)
+        let hud = HKProgressHUD.show(addedToView: self.view.window!, animated: true)
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.doSomeWork()
             
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
     
     func barDeterminateExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
-        hub.mode = .determinateHorizontalBar
-        hub.label?.text = "Loading..."
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        hud.mode = .determinateHorizontalBar
+        hud.label?.text = "Loading..."
         
         DispatchQueue.global(qos: .userInitiated).async {
-            // Do something useful in the background and update the hub periodically.
+            // Do something useful in the background and update the hud periodically.
             self.doSomeWorkWithProgess()
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
     
     func determinateExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set determinate mode
-        hub.mode = .determinate
-        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
+        hud.mode = .determinate
+        hud.label?.text = NSLocalizedString("Loading...", comment: "hud loading title")
         DispatchQueue.global(qos: .userInitiated).async {
-            // Do something useful in the background and update the hub periodically.
+            // Do something useful in the background and update the hud periodically.
             self.doSomeWorkWithProgess()
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
     
     func annularDeterminateExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set annular determinate mode
-        hub.mode = .annularDeterminate
-        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
+        hud.mode = .annularDeterminate
+        hud.label?.text = NSLocalizedString("Loading...", comment: "hud loading title")
         DispatchQueue.global(qos: .userInitiated).async {
-            // Do something useful in the background and update the hub periodically.
+            // Do something useful in the background and update the hud periodically.
             self.doSomeWorkWithProgess()
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
     
     func customViewExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         // Set the custom view mode
-        hub.mode = .customView
+        hud.mode = .customView
         // Set a checkmark
-        hub.customView = UIImageView(image: #imageLiteral(resourceName: "Checkmark"))
-        hub.isSquare = true
-        hub.label?.text = NSLocalizedString("Done", comment: "Hub done title")
-        hub.hide(animated: true, afterDelay: 3.0)
+        hud.customView = UIImageView(image: #imageLiteral(resourceName: "Checkmark"))
+        hud.isSquare = true
+        hud.label?.text = NSLocalizedString("Done", comment: "hud done title")
+        hud.hide(animated: true, afterDelay: 3.0)
     }
     
     func textExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set the Text mode
-        hub.mode = .text
-        hub.label?.text = NSLocalizedString("Message here!", comment: "Hub message title")
+        hud.mode = .text
+        hud.label?.text = NSLocalizedString("Message here!", comment: "hud message title")
         // Move to bottom center.
-        hub.offset = CGPoint(x: 0, y: HKProgressHUD.maxOffset)
-        hub.hide(animated: true, afterDelay: 3.0)
+        hud.offset = CGPoint(x: 0, y: HKProgressHUD.maxOffset)
+        hud.hide(animated: true, afterDelay: 3.0)
     }
     
     func cancelationExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set the determinate mode
-        hub.mode = .determinate
-        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
+        hud.mode = .determinate
+        hud.label?.text = NSLocalizedString("Loading...", comment: "hud loading title")
         
         // Configure the button
-        hub.button?.setTitle(NSLocalizedString("cancel", comment: "Hub cancel button title"), for: .normal)
-        hub.button?.addTarget(self, action: #selector(cancelWork(sender:)), for: .touchUpInside)
+        hud.button?.setTitle(NSLocalizedString("cancel", comment: "hud cancel button title"), for: .normal)
+        hud.button?.addTarget(self, action: #selector(cancelWork(sender:)), for: .touchUpInside)
         
         DispatchQueue.global(qos: .userInitiated).async {
-            // Do something useful in the background and update the hub periodically.
+            // Do something useful in the background and update the hud periodically.
             self.doSomeWorkWithProgess()
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
     
     func determinateProgressExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set the determinate mode
-        hub.mode = .determinate
-        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
+        hud.mode = .determinate
+        hud.label?.text = NSLocalizedString("Loading...", comment: "hud loading title")
         
         // Set up Progress
-        hub.progressObject = Progress(totalUnitCount: 100)
+        hud.progressObject = Progress(totalUnitCount: 100)
         
         // Configure the button
-        hub.button?.setTitle(NSLocalizedString("cancel", comment: "Hub cancel button title"), for: .normal)
-        hub.button?.addTarget(hub.progressObject, action: #selector(Progress.cancel), for: .touchUpInside)
+        hud.button?.setTitle(NSLocalizedString("cancel", comment: "hud cancel button title"), for: .normal)
+        hud.button?.addTarget(hud.progressObject, action: #selector(Progress.cancel), for: .touchUpInside)
         
         DispatchQueue.global(qos: .userInitiated).async {
-            // Do something useful in the background and update the hub periodically.
-            self.doSomeWork(forProgressObject: hub.progressObject!)
+            // Do something useful in the background and update the hud periodically.
+            self.doSomeWork(forProgressObject: hud.progressObject!)
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
     
     func modeSwitchExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set some text to show the initial status.
-        hub.label?.text = NSLocalizedString("Preparing", comment: "Hub preparing title")
+        hud.label?.text = NSLocalizedString("Preparing", comment: "hud preparing title")
         // Set min size
-        hub.minSize = CGSize(width: 150, height: 100)
+        hud.minSize = CGSize(width: 150, height: 100)
         
         DispatchQueue.global(qos: .userInitiated).async {
-            // Do something useful in the background and update the hub periodically.
+            // Do something useful in the background and update the hud periodically.
             self.doSomeWorkWithMixedProgress()
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
     
     func dimBackgroundExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Change the background view style and color
-        hub.backgroundView?.style = .solidColor
-        hub.backgroundView?.color = UIColor(white: 0, alpha: 0.1)
+        hud.backgroundView?.style = .solidColor
+        hud.backgroundView?.color = UIColor(white: 0, alpha: 0.1)
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.doSomeWork()
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
     
     func colorExample() {
-        let hub = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
-        hub.contentColor = UIColor(red: 0, green: 0.6, blue: 0.7, alpha: 1)
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        hud.contentColor = UIColor(red: 0, green: 0.6, blue: 0.7, alpha: 1)
         
         // Set the label text.
-        hub.label?.text = NSLocalizedString("Loading...", comment: "Hub loading title")
+        hud.label?.text = NSLocalizedString("Loading...", comment: "hud loading title")
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.doSomeWork()
             DispatchQueue.main.async {
-                hub.hide(animated: true)
+                hud.hide(animated: true)
             }
         }
     }
@@ -280,7 +280,7 @@ class ViewController: UITableViewController {
             }
             progress += 0.01
             DispatchQueue.main.async {
-                HKProgressHUD.hubForView((self.navigationController?.view)!)?.progress = progress
+                HKProgressHUD.hudForView((self.navigationController?.view)!)?.progress = progress
             }
             usleep(50000)
         }
@@ -299,29 +299,29 @@ class ViewController: UITableViewController {
     }
     
     func doSomeWorkWithMixedProgress() {
-        let hub = HKProgressHUD.hubForView((self.navigationController?.view)!)
+        let hud = HKProgressHUD.hudForView((self.navigationController?.view)!)
         
         // Indetermimate mode
         sleep(2)
         // Switch to deteminate mode
         DispatchQueue.main.async {
-            hub?.mode = .determinate
-            hub?.label?.text = NSLocalizedString("Loading", comment: "Hub loading title")
+            hud?.mode = .determinate
+            hud?.label?.text = NSLocalizedString("Loading", comment: "hud loading title")
         }
         doSomeWorkWithProgess()
         
         // Back to indeter mode
         DispatchQueue.main.async {
-            hub?.mode = .indeterminate
-            hub?.label?.text = NSLocalizedString("Cleaning up...", comment: "Hub cleaning up title")
+            hud?.mode = .indeterminate
+            hud?.label?.text = NSLocalizedString("Cleaning up...", comment: "hud cleaning up title")
         }
         sleep(2)
         DispatchQueue.main.sync {
             let image = #imageLiteral(resourceName: "Checkmark").withRenderingMode(.alwaysTemplate)
             let imageView = UIImageView(image: image)
-            hub?.customView = imageView
-            hub?.mode = .customView
-            hub?.label?.text = NSLocalizedString("Completed", comment: "Hub completed title")
+            hud?.customView = imageView
+            hud?.mode = .customView
+            hud?.label?.text = NSLocalizedString("Completed", comment: "hud completed title")
         }
         sleep(2)
     }
