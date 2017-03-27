@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3D6ACEAA1E80D6BD0015CFF9"
-               BuildableName = "HubDemo.app"
-               BlueprintName = "HubDemo"
-               ReferencedContainer = "container:HubDemo.xcodeproj">
+               BlueprintIdentifier = "3D6ACE591E7F89190015CFF9"
+               BuildableName = "HKProgressHUD.framework"
+               BlueprintName = "HKProgressHUD"
+               ReferencedContainer = "container:HKProgressHUD.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3D6ACEBE1E80D6BE0015CFF9"
-               BuildableName = "HubDemoTests.xctest"
-               BlueprintName = "HubDemoTests"
-               ReferencedContainer = "container:HubDemo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3D6ACEAA1E80D6BD0015CFF9"
-            BuildableName = "HubDemo.app"
-            BlueprintName = "HubDemo"
-            ReferencedContainer = "container:HubDemo.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -61,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3D6ACEAA1E80D6BD0015CFF9"
-            BuildableName = "HubDemo.app"
-            BlueprintName = "HubDemo"
-            ReferencedContainer = "container:HubDemo.xcodeproj">
+            BlueprintIdentifier = "3D6ACE591E7F89190015CFF9"
+            BuildableName = "HKProgressHUD.framework"
+            BlueprintName = "HKProgressHUD"
+            ReferencedContainer = "container:HKProgressHUD.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3D6ACEAA1E80D6BD0015CFF9"
-            BuildableName = "HubDemo.app"
-            BlueprintName = "HubDemo"
-            ReferencedContainer = "container:HubDemo.xcodeproj">
+            BlueprintIdentifier = "3D6ACE591E7F89190015CFF9"
+            BuildableName = "HKProgressHUD.framework"
+            BlueprintName = "HKProgressHUD"
+            ReferencedContainer = "container:HKProgressHUD.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

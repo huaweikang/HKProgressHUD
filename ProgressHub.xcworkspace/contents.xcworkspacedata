@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:ProgressHub.xcodeproj">
+      location = "container:/Users/kang/Projects/XcodeProjects/ProgressHub/HKProgressHUD.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:HubDemo/HubDemo.xcodeproj">
+      location = "group:/Users/kang/Projects/XcodeProjects/ProgressHub/HubDemo/HudDemo.xcodeproj">
    </FileRef>
 </Workspace>

@@ -28,14 +28,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3D6ACEAB1E80D6BD0015CFF9 /* HubDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HubDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D6ACEAB1E80D6BD0015CFF9 /* HudDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HudDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6ACEAE1E80D6BD0015CFF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D6ACEB01E80D6BD0015CFF9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3D6ACEB31E80D6BD0015CFF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D6ACEB51E80D6BD0015CFF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D6ACEB81E80D6BD0015CFF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D6ACEBA1E80D6BD0015CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D6ACEBF1E80D6BE0015CFF9 /* HubDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HubDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D6ACEBF1E80D6BE0015CFF9 /* HudDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HudDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6ACEC31E80D6BE0015CFF9 /* HubDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubDemoTests.swift; sourceTree = "<group>"; };
 		3D6ACEC51E80D6BE0015CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D6ACECE1E80DC420015CFF9 /* ProgressHub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressHub.swift; path = ../ProgressHub/ProgressHub.swift; sourceTree = "<group>"; };
@@ -73,8 +73,8 @@
 		3D6ACEAC1E80D6BD0015CFF9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3D6ACEAB1E80D6BD0015CFF9 /* HubDemo.app */,
-				3D6ACEBF1E80D6BE0015CFF9 /* HubDemoTests.xctest */,
+				3D6ACEAB1E80D6BD0015CFF9 /* HudDemo.app */,
+				3D6ACEBF1E80D6BE0015CFF9 /* HudDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,9 +113,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3D6ACEAA1E80D6BD0015CFF9 /* HubDemo */ = {
+		3D6ACEAA1E80D6BD0015CFF9 /* HudDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3D6ACEC81E80D6BE0015CFF9 /* Build configuration list for PBXNativeTarget "HubDemo" */;
+			buildConfigurationList = 3D6ACEC81E80D6BE0015CFF9 /* Build configuration list for PBXNativeTarget "HudDemo" */;
 			buildPhases = (
 				3D6ACEA71E80D6BD0015CFF9 /* Sources */,
 				3D6ACEA81E80D6BD0015CFF9 /* Frameworks */,
@@ -125,14 +125,14 @@
 			);
 			dependencies = (
 			);
-			name = HubDemo;
+			name = HudDemo;
 			productName = HubDemo;
-			productReference = 3D6ACEAB1E80D6BD0015CFF9 /* HubDemo.app */;
+			productReference = 3D6ACEAB1E80D6BD0015CFF9 /* HudDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3D6ACEBE1E80D6BE0015CFF9 /* HubDemoTests */ = {
+		3D6ACEBE1E80D6BE0015CFF9 /* HudDemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3D6ACECB1E80D6BE0015CFF9 /* Build configuration list for PBXNativeTarget "HubDemoTests" */;
+			buildConfigurationList = 3D6ACECB1E80D6BE0015CFF9 /* Build configuration list for PBXNativeTarget "HudDemoTests" */;
 			buildPhases = (
 				3D6ACEBB1E80D6BE0015CFF9 /* Sources */,
 				3D6ACEBC1E80D6BE0015CFF9 /* Frameworks */,
@@ -143,9 +143,9 @@
 			dependencies = (
 				3D6ACEC11E80D6BE0015CFF9 /* PBXTargetDependency */,
 			);
-			name = HubDemoTests;
+			name = HudDemoTests;
 			productName = HubDemoTests;
-			productReference = 3D6ACEBF1E80D6BE0015CFF9 /* HubDemoTests.xctest */;
+			productReference = 3D6ACEBF1E80D6BE0015CFF9 /* HudDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -160,7 +160,7 @@
 				TargetAttributes = {
 					3D6ACEAA1E80D6BD0015CFF9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6389HTN5HM;
+						DevelopmentTeam = 5LZ6K24W57;
 						ProvisioningStyle = Automatic;
 					};
 					3D6ACEBE1E80D6BE0015CFF9 = {
@@ -171,7 +171,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3D6ACEA61E80D6BD0015CFF9 /* Build configuration list for PBXProject "HubDemo" */;
+			buildConfigurationList = 3D6ACEA61E80D6BD0015CFF9 /* Build configuration list for PBXProject "HudDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -184,8 +184,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3D6ACEAA1E80D6BD0015CFF9 /* HubDemo */,
-				3D6ACEBE1E80D6BE0015CFF9 /* HubDemoTests */,
+				3D6ACEAA1E80D6BD0015CFF9 /* HudDemo */,
+				3D6ACEBE1E80D6BE0015CFF9 /* HudDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -235,7 +235,7 @@
 /* Begin PBXTargetDependency section */
 		3D6ACEC11E80D6BE0015CFF9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3D6ACEAA1E80D6BD0015CFF9 /* HubDemo */;
+			target = 3D6ACEAA1E80D6BD0015CFF9 /* HudDemo */;
 			targetProxy = 3D6ACEC01E80D6BE0015CFF9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -357,10 +357,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6389HTN5HM;
+				DEVELOPMENT_TEAM = 5LZ6K24W57;
 				INFOPLIST_FILE = HubDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HubDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HudDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -370,10 +370,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6389HTN5HM;
+				DEVELOPMENT_TEAM = 5LZ6K24W57;
 				INFOPLIST_FILE = HubDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HubDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HudDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -390,7 +390,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HubDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HubDemo.app/HubDemo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HudDemo.app/HudDemo";
 			};
 			name = Debug;
 		};
@@ -405,14 +405,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HubDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HubDemo.app/HubDemo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HudDemo.app/HudDemo";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3D6ACEA61E80D6BD0015CFF9 /* Build configuration list for PBXProject "HubDemo" */ = {
+		3D6ACEA61E80D6BD0015CFF9 /* Build configuration list for PBXProject "HudDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D6ACEC61E80D6BE0015CFF9 /* Debug */,
@@ -421,21 +421,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3D6ACEC81E80D6BE0015CFF9 /* Build configuration list for PBXNativeTarget "HubDemo" */ = {
+		3D6ACEC81E80D6BE0015CFF9 /* Build configuration list for PBXNativeTarget "HudDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D6ACEC91E80D6BE0015CFF9 /* Debug */,
 				3D6ACECA1E80D6BE0015CFF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		3D6ACECB1E80D6BE0015CFF9 /* Build configuration list for PBXNativeTarget "HubDemoTests" */ = {
+		3D6ACECB1E80D6BE0015CFF9 /* Build configuration list for PBXNativeTarget "HudDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D6ACECC1E80D6BE0015CFF9 /* Debug */,
 				3D6ACECD1E80D6BE0015CFF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

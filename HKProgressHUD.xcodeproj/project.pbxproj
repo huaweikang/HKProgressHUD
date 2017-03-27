@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D6ACE641E7F89190015CFF9 /* ProgressHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6ACE5A1E7F89190015CFF9 /* ProgressHub.framework */; };
+		3D6ACE641E7F89190015CFF9 /* HKProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6ACE5A1E7F89190015CFF9 /* HKProgressHUD.framework */; };
 		3D6ACE691E7F89190015CFF9 /* ProgressHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACE681E7F89190015CFF9 /* ProgressHubTests.swift */; };
 		3D6ACE6B1E7F89190015CFF9 /* ProgressHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D6ACE5D1E7F89190015CFF9 /* ProgressHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D6ACE9D1E7F90DE0015CFF9 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6ACE9C1E7F90DE0015CFF9 /* Quick.framework */; };
@@ -26,10 +26,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3D6ACE5A1E7F89190015CFF9 /* ProgressHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProgressHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D6ACE5A1E7F89190015CFF9 /* HKProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HKProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6ACE5D1E7F89190015CFF9 /* ProgressHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressHub.h; sourceTree = "<group>"; };
 		3D6ACE5E1E7F89190015CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D6ACE631E7F89190015CFF9 /* ProgressHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProgressHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D6ACE631E7F89190015CFF9 /* HKProgressHUDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HKProgressHUDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6ACE681E7F89190015CFF9 /* ProgressHubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHubTests.swift; sourceTree = "<group>"; };
 		3D6ACE6A1E7F89190015CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D6ACE9C1E7F90DE0015CFF9 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Carthage/Checkouts/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D6ACE9D1E7F90DE0015CFF9 /* Quick.framework in Frameworks */,
-				3D6ACE641E7F89190015CFF9 /* ProgressHub.framework in Frameworks */,
+				3D6ACE641E7F89190015CFF9 /* HKProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,8 +70,8 @@
 		3D6ACE5B1E7F89190015CFF9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3D6ACE5A1E7F89190015CFF9 /* ProgressHub.framework */,
-				3D6ACE631E7F89190015CFF9 /* ProgressHubTests.xctest */,
+				3D6ACE5A1E7F89190015CFF9 /* HKProgressHUD.framework */,
+				3D6ACE631E7F89190015CFF9 /* HKProgressHUDTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,9 +118,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		3D6ACE591E7F89190015CFF9 /* ProgressHub */ = {
+		3D6ACE591E7F89190015CFF9 /* HKProgressHUD */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3D6ACE6E1E7F89190015CFF9 /* Build configuration list for PBXNativeTarget "ProgressHub" */;
+			buildConfigurationList = 3D6ACE6E1E7F89190015CFF9 /* Build configuration list for PBXNativeTarget "HKProgressHUD" */;
 			buildPhases = (
 				3D6ACE551E7F89190015CFF9 /* Sources */,
 				3D6ACE561E7F89190015CFF9 /* Frameworks */,
@@ -131,14 +131,14 @@
 			);
 			dependencies = (
 			);
-			name = ProgressHub;
+			name = HKProgressHUD;
 			productName = ProgressHub;
-			productReference = 3D6ACE5A1E7F89190015CFF9 /* ProgressHub.framework */;
+			productReference = 3D6ACE5A1E7F89190015CFF9 /* HKProgressHUD.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		3D6ACE621E7F89190015CFF9 /* ProgressHubTests */ = {
+		3D6ACE621E7F89190015CFF9 /* HKProgressHUDTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3D6ACE711E7F89190015CFF9 /* Build configuration list for PBXNativeTarget "ProgressHubTests" */;
+			buildConfigurationList = 3D6ACE711E7F89190015CFF9 /* Build configuration list for PBXNativeTarget "HKProgressHUDTests" */;
 			buildPhases = (
 				3D6ACE5F1E7F89190015CFF9 /* Sources */,
 				3D6ACE601E7F89190015CFF9 /* Frameworks */,
@@ -149,9 +149,9 @@
 			dependencies = (
 				3D6ACE661E7F89190015CFF9 /* PBXTargetDependency */,
 			);
-			name = ProgressHubTests;
+			name = HKProgressHUDTests;
 			productName = ProgressHubTests;
-			productReference = 3D6ACE631E7F89190015CFF9 /* ProgressHubTests.xctest */;
+			productReference = 3D6ACE631E7F89190015CFF9 /* HKProgressHUDTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -177,7 +177,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3D6ACE541E7F89190015CFF9 /* Build configuration list for PBXProject "ProgressHub" */;
+			buildConfigurationList = 3D6ACE541E7F89190015CFF9 /* Build configuration list for PBXProject "HKProgressHUD" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -189,8 +189,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3D6ACE591E7F89190015CFF9 /* ProgressHub */,
-				3D6ACE621E7F89190015CFF9 /* ProgressHubTests */,
+				3D6ACE591E7F89190015CFF9 /* HKProgressHUD */,
+				3D6ACE621E7F89190015CFF9 /* HKProgressHUDTests */,
 			);
 		};
 /* End PBXProject section */
@@ -235,7 +235,7 @@
 /* Begin PBXTargetDependency section */
 		3D6ACE661E7F89190015CFF9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3D6ACE591E7F89190015CFF9 /* ProgressHub */;
+			target = 3D6ACE591E7F89190015CFF9 /* HKProgressHUD */;
 			targetProxy = 3D6ACE651E7F89190015CFF9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -353,7 +353,7 @@
 				INFOPLIST_FILE = ProgressHub/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.ProgressHub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HKProgressHUD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -374,7 +374,7 @@
 				INFOPLIST_FILE = ProgressHub/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.ProgressHub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HKProgressHUD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -418,7 +418,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3D6ACE541E7F89190015CFF9 /* Build configuration list for PBXProject "ProgressHub" */ = {
+		3D6ACE541E7F89190015CFF9 /* Build configuration list for PBXProject "HKProgressHUD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D6ACE6C1E7F89190015CFF9 /* Debug */,
@@ -427,7 +427,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3D6ACE6E1E7F89190015CFF9 /* Build configuration list for PBXNativeTarget "ProgressHub" */ = {
+		3D6ACE6E1E7F89190015CFF9 /* Build configuration list for PBXNativeTarget "HKProgressHUD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D6ACE6F1E7F89190015CFF9 /* Debug */,
@@ -436,7 +436,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3D6ACE711E7F89190015CFF9 /* Build configuration list for PBXNativeTarget "ProgressHubTests" */ = {
+		3D6ACE711E7F89190015CFF9 /* Build configuration list for PBXNativeTarget "HKProgressHUDTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D6ACE721E7F89190015CFF9 /* Debug */,

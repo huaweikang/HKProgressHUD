@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import HubDemo
+@testable import HudDemo
 
 class HubDemoTests: XCTestCase {
     
@@ -47,5 +47,8 @@ class HubDemoTests: XCTestCase {
         XCTAssertTrue(hub.alpha == 0.0, "Hub should be invisible")
         XCTAssertNil(hub.superview, "Hub should not have a superview")
     }
+    
+    
+    // MARK: ProgressHub delegate
     
 }
