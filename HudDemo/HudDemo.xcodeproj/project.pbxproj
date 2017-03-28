@@ -13,8 +13,8 @@
 		3D6ACEB61E80D6BD0015CFF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D6ACEB51E80D6BD0015CFF9 /* Assets.xcassets */; };
 		3D6ACEB91E80D6BD0015CFF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6ACEB71E80D6BD0015CFF9 /* LaunchScreen.storyboard */; };
 		3D6ACEC41E80D6BE0015CFF9 /* HudDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACEC31E80D6BE0015CFF9 /* HudDemoTests.swift */; };
-		3D6ACED11E80DC420015CFF9 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACECF1E80DC420015CFF9 /* ProgressView.swift */; };
-		3DE635D11E88BFBB009F591B /* HKProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE635D01E88BFBB009F591B /* HKProgressHUD.swift */; };
+		3DED908D1E8A0C0D004FD419 /* HKProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED908B1E8A0C0D004FD419 /* HKProgressHUD.swift */; };
+		3DED908E1E8A0C0D004FD419 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED908C1E8A0C0D004FD419 /* ProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +38,8 @@
 		3D6ACEBF1E80D6BE0015CFF9 /* HudDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HudDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6ACEC31E80D6BE0015CFF9 /* HudDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudDemoTests.swift; sourceTree = "<group>"; };
 		3D6ACEC51E80D6BE0015CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D6ACECF1E80DC420015CFF9 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressView.swift; path = ../ProgressHub/ProgressView.swift; sourceTree = "<group>"; };
-		3DE635D01E88BFBB009F591B /* HKProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HKProgressHUD.swift; path = ../ProgressHub/HKProgressHUD.swift; sourceTree = "<group>"; };
+		3DED908B1E8A0C0D004FD419 /* HKProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HKProgressHUD.swift; path = ../../ProgressHUD/HKProgressHUD.swift; sourceTree = "<group>"; };
+		3DED908C1E8A0C0D004FD419 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressView.swift; path = ../../ProgressHUD/ProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				3D6ACEAD1E80D6BD0015CFF9 /* HudDemo */,
-				3D6ACED21E80DC4A0015CFF9 /* ProgressHUD */,
+				3DED908A1E8A0BE4004FD419 /* ProgressHUD */,
 				3D6ACEC21E80D6BE0015CFF9 /* HudDemoTests */,
 				3D6ACEAC1E80D6BD0015CFF9 /* Products */,
 			);
@@ -89,8 +89,7 @@
 				3D6ACEB71E80D6BD0015CFF9 /* LaunchScreen.storyboard */,
 				3D6ACEBA1E80D6BD0015CFF9 /* Info.plist */,
 			);
-			name = HudDemo;
-			path = HubDemo;
+			path = HudDemo;
 			sourceTree = "<group>";
 		};
 		3D6ACEC21E80D6BE0015CFF9 /* HudDemoTests */ = {
@@ -99,17 +98,17 @@
 				3D6ACEC31E80D6BE0015CFF9 /* HudDemoTests.swift */,
 				3D6ACEC51E80D6BE0015CFF9 /* Info.plist */,
 			);
-			name = HudDemoTests;
-			path = HubDemoTests;
+			path = HudDemoTests;
 			sourceTree = "<group>";
 		};
-		3D6ACED21E80DC4A0015CFF9 /* ProgressHUD */ = {
+		3DED908A1E8A0BE4004FD419 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				3DE635D01E88BFBB009F591B /* HKProgressHUD.swift */,
-				3D6ACECF1E80DC420015CFF9 /* ProgressView.swift */,
+				3DED908B1E8A0C0D004FD419 /* HKProgressHUD.swift */,
+				3DED908C1E8A0C0D004FD419 /* ProgressView.swift */,
 			);
 			name = ProgressHUD;
+			path = HudDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,9 +217,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D6ACEB11E80D6BD0015CFF9 /* ViewController.swift in Sources */,
-				3DE635D11E88BFBB009F591B /* HKProgressHUD.swift in Sources */,
-				3D6ACED11E80DC420015CFF9 /* ProgressView.swift in Sources */,
+				3DED908E1E8A0C0D004FD419 /* ProgressView.swift in Sources */,
 				3D6ACEAF1E80D6BD0015CFF9 /* AppDelegate.swift in Sources */,
+				3DED908D1E8A0C0D004FD419 /* HKProgressHUD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5LZ6K24W57;
-				INFOPLIST_FILE = HubDemo/Info.plist;
+				INFOPLIST_FILE = HudDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HudDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -373,7 +372,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5LZ6K24W57;
-				INFOPLIST_FILE = HubDemo/Info.plist;
+				INFOPLIST_FILE = HudDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HudDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -387,7 +386,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 5LZ6K24W57;
-				INFOPLIST_FILE = HubDemoTests/Info.plist;
+				INFOPLIST_FILE = HudDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HubDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -402,7 +401,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 5LZ6K24W57;
-				INFOPLIST_FILE = HubDemoTests/Info.plist;
+				INFOPLIST_FILE = HudDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HubDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
