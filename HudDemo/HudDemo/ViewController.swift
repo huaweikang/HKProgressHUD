@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, URLSessionDownloadDelegate {
     
     let examples = [
         ("Indeterminate mode", #selector(indeterminateExample)),
@@ -24,7 +24,8 @@ class ViewController: UITableViewController {
         ("Determinate with Progress", #selector(determinateProgressExample)),
         ("Mode swithing", #selector(modeSwitchExample)),
         ("Dim background", #selector(dimBackgroundExample)),
-        ("Colored", #selector(colorExample))
+        ("Colored", #selector(colorExample)),
+        ("URLSession", #selector(networkingExample))
                     ]
 
     override func viewDidLoad() {
@@ -259,6 +260,17 @@ class ViewController: UITableViewController {
         }
     }
     
+    func networkingExample() {
+        let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
+        
+        // Set some text to show the initial status.
+        hud.label?.text = NSLocalizedString("Preparing", comment: "hud preparing title")
+        // Set min size
+        hud.minSize = CGSize(width: 150, height: 100)
+        
+        doSomeNetworkWorkWithProgress()
+    }
+    
     
     // MARK - Tasks
     func doSomeWork() {
@@ -325,6 +337,14 @@ class ViewController: UITableViewController {
         }
         sleep(2)
     }
+    
+    func doSomeNetworkWorkWithProgress() {
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: nil)
+        let url = URL(string: "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/HT1425/sample_iPod.m4v.zip")
+        let task = session.downloadTask(with: url!)
+        task.resume()
+    }
 
     
     // MARK: UITableViewDataSource
@@ -356,6 +376,32 @@ class ViewController: UITableViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1, execute: {
             tableView.deselectRow(at: indexPath, animated: true)
         })
+    }
+    
+    // MARK: URLSessionDelegate
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        // Do something with the data at location...
+        
+        // Update UI on the main thread
+        DispatchQueue.main.async {
+            let hud = HKProgressHUD.hudForView((self.navigationController?.view)!)
+            let imageView = UIImageView(image:#imageLiteral(resourceName: "Checkmark").withRenderingMode(.alwaysTemplate))
+            hud?.customView = imageView
+            hud?.mode = .customView
+            hud?.label?.text = NSLocalizedString("Completed", comment: "HUD completed title")
+            hud?.hide(animated: true, afterDelay: 3.0)
+        }
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        
+        // Update UI on the main thread
+        DispatchQueue.main.async {
+            let hud = HKProgressHUD.hudForView((self.navigationController?.view)!)
+            hud?.mode = .determinate
+            hud?.progress = progress
+        }
     }
 }
 
