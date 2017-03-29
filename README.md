@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/huaweikang/HKProgressHUD.svg?branch=master)](https://travis-ci.org/huaweikang/HKProgressHUD)
 [![codecov](https://codecov.io/gh/huaweikang/HKProgressHUD/branch/master/graph/badge.svg)](https://codecov.io/gh/huaweikang/HKProgressHUD)
+![CocoaPod Platform](https://img.shields.io/cocoapods/p/HKProgressHUD.svg?style=flat)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/HKProgressHUD.svg?style=flat)](https://cocoapods.org/pods/HKProgressHUD)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application)
 [![License: MIT](https://img.shields.io/cocoapods/l/HKProgressHUD.svg?style=flat)](http://opensource.org/licenses/MIT)
