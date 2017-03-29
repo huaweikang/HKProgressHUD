@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D5678501E8B66B700B61446 /* HKProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED908B1E8A0C0D004FD419 /* HKProgressHUD.swift */; };
+		3D5678511E8B66BB00B61446 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED908C1E8A0C0D004FD419 /* ProgressView.swift */; };
 		3D6ACEAF1E80D6BD0015CFF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACEAE1E80D6BD0015CFF9 /* AppDelegate.swift */; };
 		3D6ACEB11E80D6BD0015CFF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACEB01E80D6BD0015CFF9 /* ViewController.swift */; };
 		3D6ACEB41E80D6BD0015CFF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6ACEB21E80D6BD0015CFF9 /* Main.storyboard */; };
@@ -15,6 +17,10 @@
 		3D6ACEC41E80D6BE0015CFF9 /* HudDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ACEC31E80D6BE0015CFF9 /* HudDemoTests.swift */; };
 		3DED908D1E8A0C0D004FD419 /* HKProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED908B1E8A0C0D004FD419 /* HKProgressHUD.swift */; };
 		3DED908E1E8A0C0D004FD419 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED908C1E8A0C0D004FD419 /* ProgressView.swift */; };
+		3DED90961E8A7842004FD419 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED90951E8A7842004FD419 /* AppDelegate.swift */; };
+		3DED90981E8A7842004FD419 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED90971E8A7842004FD419 /* ViewController.swift */; };
+		3DED909B1E8A7842004FD419 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DED90991E8A7842004FD419 /* Main.storyboard */; };
+		3DED909D1E8A7842004FD419 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DED909C1E8A7842004FD419 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +46,12 @@
 		3D6ACEC51E80D6BE0015CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DED908B1E8A0C0D004FD419 /* HKProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HKProgressHUD.swift; path = ../../ProgressHUD/HKProgressHUD.swift; sourceTree = "<group>"; };
 		3DED908C1E8A0C0D004FD419 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressView.swift; path = ../../ProgressHUD/ProgressView.swift; sourceTree = "<group>"; };
+		3DED90931E8A7842004FD419 /* HudDemoTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HudDemoTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DED90951E8A7842004FD419 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3DED90971E8A7842004FD419 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3DED909A1E8A7842004FD419 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DED909C1E8A7842004FD419 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3DED909E1E8A7842004FD419 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +69,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3DED90901E8A7842004FD419 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -64,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				3D6ACEAD1E80D6BD0015CFF9 /* HudDemo */,
+				3DED90941E8A7842004FD419 /* HudDemoTV */,
 				3DED908A1E8A0BE4004FD419 /* ProgressHUD */,
 				3D6ACEC21E80D6BE0015CFF9 /* HudDemoTests */,
 				3D6ACEAC1E80D6BD0015CFF9 /* Products */,
@@ -75,6 +95,7 @@
 			children = (
 				3D6ACEAB1E80D6BD0015CFF9 /* HudDemo.app */,
 				3D6ACEBF1E80D6BE0015CFF9 /* HudDemoTests.xctest */,
+				3DED90931E8A7842004FD419 /* HudDemoTV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +130,18 @@
 			);
 			name = ProgressHUD;
 			path = HudDemo;
+			sourceTree = "<group>";
+		};
+		3DED90941E8A7842004FD419 /* HudDemoTV */ = {
+			isa = PBXGroup;
+			children = (
+				3DED90951E8A7842004FD419 /* AppDelegate.swift */,
+				3DED90971E8A7842004FD419 /* ViewController.swift */,
+				3DED90991E8A7842004FD419 /* Main.storyboard */,
+				3DED909C1E8A7842004FD419 /* Assets.xcassets */,
+				3DED909E1E8A7842004FD419 /* Info.plist */,
+			);
+			path = HudDemoTV;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +182,23 @@
 			productReference = 3D6ACEBF1E80D6BE0015CFF9 /* HudDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		3DED90921E8A7842004FD419 /* HudDemoTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DED90A11E8A7842004FD419 /* Build configuration list for PBXNativeTarget "HudDemoTV" */;
+			buildPhases = (
+				3DED908F1E8A7842004FD419 /* Sources */,
+				3DED90901E8A7842004FD419 /* Frameworks */,
+				3DED90911E8A7842004FD419 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HudDemoTV;
+			productName = HudDemoTV;
+			productReference = 3DED90931E8A7842004FD419 /* HudDemoTV.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -170,6 +220,11 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 3D6ACEAA1E80D6BD0015CFF9;
 					};
+					3DED90921E8A7842004FD419 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5LZ6K24W57;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 3D6ACEA61E80D6BD0015CFF9 /* Build configuration list for PBXProject "HudDemo" */;
@@ -186,6 +241,7 @@
 			projectRoot = "";
 			targets = (
 				3D6ACEAA1E80D6BD0015CFF9 /* HudDemo */,
+				3DED90921E8A7842004FD419 /* HudDemoTV */,
 				3D6ACEBE1E80D6BE0015CFF9 /* HudDemoTests */,
 			);
 		};
@@ -209,6 +265,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3DED90911E8A7842004FD419 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DED909D1E8A7842004FD419 /* Assets.xcassets in Resources */,
+				3DED909B1E8A7842004FD419 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -228,6 +293,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D6ACEC41E80D6BE0015CFF9 /* HudDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DED908F1E8A7842004FD419 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DED90981E8A7842004FD419 /* ViewController.swift in Sources */,
+				3D5678511E8B66BB00B61446 /* ProgressView.swift in Sources */,
+				3DED90961E8A7842004FD419 /* AppDelegate.swift in Sources */,
+				3D5678501E8B66B700B61446 /* HKProgressHUD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +332,14 @@
 				3D6ACEB81E80D6BD0015CFF9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3DED90991E8A7842004FD419 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DED909A1E8A7842004FD419 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -410,6 +494,36 @@
 			};
 			name = Release;
 		};
+		3DED909F1E8A7842004FD419 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5LZ6K24W57;
+				INFOPLIST_FILE = HudDemoTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HudDemoTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		3DED90A01E8A7842004FD419 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5LZ6K24W57;
+				INFOPLIST_FILE = HudDemoTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.huaweikang.HudDemoTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -436,6 +550,15 @@
 			buildConfigurations = (
 				3D6ACECC1E80D6BE0015CFF9 /* Debug */,
 				3D6ACECD1E80D6BE0015CFF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DED90A11E8A7842004FD419 /* Build configuration list for PBXNativeTarget "HudDemoTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DED909F1E8A7842004FD419 /* Debug */,
+				3DED90A01E8A7842004FD419 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
