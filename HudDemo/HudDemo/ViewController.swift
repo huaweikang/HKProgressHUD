@@ -45,7 +45,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
     }
     
     // MARK: Examples
-    func indeterminateExample() {
+    @objc func indeterminateExample() {
         // Show the hud on the root view (self.view is a scrollable table view and thus not suitable,
         // as the hud would move with the content as we scroll).
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
@@ -60,7 +60,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
             }
         }
     }
-    func labelExample() {
+    @objc func labelExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set label text
@@ -75,7 +75,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
             }
         }
     }
-    func detailsLabelExample() {
+    @objc func detailsLabelExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set label text
@@ -91,7 +91,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
             }
         }
     }
-    func windowExample() {
+    @objc func windowExample() {
         // Cover the entire screen.
         let hud = HKProgressHUD.show(addedToView: self.view.window!, animated: true)
         
@@ -104,7 +104,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         }
     }
     
-    func barDeterminateExample() {
+    @objc func barDeterminateExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         hud.mode = .determinateHorizontalBar
         hud.label?.text = "Loading..."
@@ -118,7 +118,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         }
     }
     
-    func determinateExample() {
+    @objc func determinateExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set determinate mode
@@ -133,7 +133,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         }
     }
     
-    func annularDeterminateExample() {
+    @objc func annularDeterminateExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set annular determinate mode
@@ -148,7 +148,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         }
     }
     
-    func customViewExample() {
+    @objc func customViewExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         // Set the custom view mode
         hud.mode = .customView
@@ -159,7 +159,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         hud.hide(animated: true, afterDelay: 3.0)
     }
     
-    func textExample() {
+    @objc func textExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set the Text mode
@@ -170,7 +170,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         hud.hide(animated: true, afterDelay: 3.0)
     }
     
-    func cancelationExample() {
+    @objc func cancelationExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set the determinate mode
@@ -190,7 +190,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         }
     }
     
-    func determinateProgressExample() {
+    @objc func determinateProgressExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set the determinate mode
@@ -213,7 +213,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         }
     }
     
-    func modeSwitchExample() {
+    @objc func modeSwitchExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set some text to show the initial status.
@@ -230,7 +230,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         }
     }
     
-    func dimBackgroundExample() {
+    @objc func dimBackgroundExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Change the background view style and color
@@ -245,7 +245,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         }
     }
     
-    func colorExample() {
+    @objc func colorExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         hud.contentColor = UIColor(red: 0, green: 0.6, blue: 0.7, alpha: 1)
         
@@ -260,7 +260,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         }
     }
     
-    func networkingExample() {
+    @objc func networkingExample() {
         let hud = HKProgressHUD.show(addedToView: (self.navigationController?.view)!, animated: true)
         
         // Set some text to show the initial status.
@@ -279,7 +279,7 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
     
     var canceled = false
     
-    func cancelWork(sender: AnyObject) {
+    @objc func cancelWork(sender: AnyObject) {
         self.canceled = true
     }
     
@@ -311,12 +311,11 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
     }
     
     func doSomeWorkWithMixedProgress() {
-        let hud = HKProgressHUD.hudForView((self.navigationController?.view)!)
-        
         // Indetermimate mode
         sleep(2)
         // Switch to deteminate mode
         DispatchQueue.main.async {
+            let hud = HKProgressHUD.hudForView((self.navigationController?.view)!)
             hud?.mode = .determinate
             hud?.label?.text = NSLocalizedString("Loading", comment: "hud loading title")
         }
@@ -324,11 +323,13 @@ class ViewController: UITableViewController, URLSessionDownloadDelegate {
         
         // Back to indeter mode
         DispatchQueue.main.async {
+            let hud = HKProgressHUD.hudForView((self.navigationController?.view)!)
             hud?.mode = .indeterminate
             hud?.label?.text = NSLocalizedString("Cleaning up...", comment: "hud cleaning up title")
         }
         sleep(2)
         DispatchQueue.main.sync {
+            let hud = HKProgressHUD.hudForView((self.navigationController?.view)!)
             let image = #imageLiteral(resourceName: "Checkmark").withRenderingMode(.alwaysTemplate)
             let imageView = UIImageView(image: image)
             hud?.customView = imageView

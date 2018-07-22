@@ -222,18 +222,18 @@ public class HKProgressHUD: UIView {
     }
     
     // MARK: Timer callbacks
-    func handleGraceTimer(_ timer: Timer) {
+    @objc func handleGraceTimer(_ timer: Timer) {
         // Show the HUD only if the task is still running
         if(!isFinished) {
             showUsingAnimation(isUseAnimation!)
         }
     }
     
-    func handleMinShowTimer(_ timer: Timer) {
+    @objc func handleMinShowTimer(_ timer: Timer) {
         hideUsingAnimation(isUseAnimation!)
     }
     
-    func handleHideTimer(_ timer: Timer) {
+    @objc func handleHideTimer(_ timer: Timer) {
         hide(animated: timer.userInfo as! Bool)
     }
     
@@ -370,8 +370,8 @@ public class HKProgressHUD: UIView {
         
         for view: UIView in [label!, detailsLabel!, button!] {
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.setContentCompressionResistancePriority(998.0, for: .horizontal)
-            view.setContentCompressionResistancePriority(998.0, for: .vertical)
+            view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998.0), for: .horizontal)
+            view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998.0), for: .vertical)
             bezelView?.addSubview(view)
         }
         
@@ -429,11 +429,11 @@ public class HKProgressHUD: UIView {
         
         indicator?.translatesAutoresizingMaskIntoConstraints = false
         if let progressView = indicator as? ProgressView {
-            progressView.setValue(progress, forKey: "progress")
+            progressView.progress = progress
         }
         
-        indicator?.setContentCompressionResistancePriority(998, for: .horizontal)
-        indicator?.setContentCompressionResistancePriority(998, for: .vertical)
+        indicator?.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998), for: .horizontal)
+        indicator?.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998), for: .vertical)
         
         updateViews(forColor: contentColor)
         setNeedsUpdateConstraints()
@@ -504,14 +504,14 @@ public class HKProgressHUD: UIView {
         var centeringConstraints = [NSLayoutConstraint]()
         centeringConstraints.append(NSLayoutConstraint(item: bezelView!, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: offset.x))
         centeringConstraints.append(NSLayoutConstraint(item: bezelView!, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: offset.y))
-        apply(priority: 998, toConstraints: centeringConstraints)
+        apply(priority: UILayoutPriority(rawValue: 998), toConstraints: centeringConstraints)
         addConstraints(centeringConstraints)
         
         // Ensure minimum side margin is kept
         var sideConstraints = [NSLayoutConstraint]()
         sideConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "|-(>=margin)-[bezel]-(>=margin)-|", options: .alignAllTop, metrics: metrics, views: ["bezel": bezelView!]))
         sideConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-(>=margin)-[bezel]-(>=margin)-|", options: .alignAllTop, metrics: metrics, views: ["bezel": bezelView!]))
-        self.apply(priority: 999, toConstraints: sideConstraints)
+        self.apply(priority: UILayoutPriority(rawValue: 999), toConstraints: sideConstraints)
         self.addConstraints(sideConstraints)
         
         // Minimum bezel size, if set
@@ -520,14 +520,14 @@ public class HKProgressHUD: UIView {
             var miniSizeConstraints = [NSLayoutConstraint]()
             miniSizeConstraints.append(NSLayoutConstraint(item: bezelView!, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: minimumSize.width))
             miniSizeConstraints.append(NSLayoutConstraint(item: bezelView!, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: minimumSize.height))
-            self.apply(priority: 997, toConstraints: miniSizeConstraints)
+            self.apply(priority: UILayoutPriority(rawValue: 997), toConstraints: miniSizeConstraints)
             bezelConstraints?.append(contentsOf: miniSizeConstraints)
         }
         
         // Square aspect ratio, if set
         if(isSquare) {
             let square = NSLayoutConstraint(item: bezelView!, attribute: .height, relatedBy: .equal, toItem: bezelView!, attribute: .width, multiplier: 1, constant: 0)
-            square.priority = 997
+            square.priority = UILayoutPriority(rawValue: 997)
             bezelConstraints?.append(square)
         }
         
@@ -609,7 +609,7 @@ public class HKProgressHUD: UIView {
         }
     }
     
-    func updateProgressFromProgressObject() {
+    @objc func updateProgressFromProgressObject() {
         progress = Float((progressObject?.fractionCompleted)!)
     }
     
@@ -629,7 +629,7 @@ public class HKProgressHUD: UIView {
     }
     
 #if !os(tvOS)
-    func statusBarOrientationDidChange(_ notification: NSNotification) {
+    @objc func statusBarOrientationDidChange(_ notification: NSNotification) {
         if (superview != nil) {
             updateForCurrentOrientation(animated: true)
         }
@@ -724,7 +724,7 @@ class ProgressHUDRoundedButton: UIButton {
         super.layoutSubviews()
         // Rounded corners
         let height = self.bounds.height
-        self.layer.cornerRadius = height.divided(by: 2.0)
+        self.layer.cornerRadius = height / 2.0
     }
     
     override var intrinsicContentSize: CGSize {
