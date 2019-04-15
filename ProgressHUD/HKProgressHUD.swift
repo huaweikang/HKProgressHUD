@@ -113,7 +113,7 @@ public class HKProgressHUD: UIView {
         }
         didSet {
             if oldValue !== progressObjectDisplayLink {
-                progressObjectDisplayLink?.add(to: RunLoop.main, forMode: .defaultRunLoopMode)
+                progressObjectDisplayLink?.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
             }
         }
     }
@@ -188,7 +188,7 @@ public class HKProgressHUD: UIView {
         // If the grace time is set, postpone the HUD display
         if ( graceTime > 0.0) {
             let timer = Timer(timeInterval: graceTime, target: self, selector: #selector(handleGraceTimer(_:)), userInfo: nil, repeats: false)
-            RunLoop.current.add(timer, forMode: .commonModes)
+            RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
             graceTimer = timer
         } else {
             showUsingAnimation(animated)
@@ -206,7 +206,7 @@ public class HKProgressHUD: UIView {
             let interval = Date().timeIntervalSince(showStarted!)
             if(interval < minShowTime) {
                 let timer = Timer(timeInterval: (minShowTime - interval), target: self, selector: #selector(handleMinShowTimer(_:)), userInfo: nil, repeats: false)
-                RunLoop.current.add(timer, forMode: .commonModes)
+                RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
                 minShowTimer = timer
             }
         } else {
@@ -217,7 +217,7 @@ public class HKProgressHUD: UIView {
     
     func hide(animated: Bool, afterDelay delay: TimeInterval) {
         let timer = Timer(timeInterval: delay, target: self, selector: #selector(handleHideTimer(_:)), userInfo: animated, repeats: false)
-        RunLoop.current.add(timer, forMode: .commonModes)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
         hideDelayTimer = timer
     }
     
@@ -392,7 +392,7 @@ public class HKProgressHUD: UIView {
             if indicator as? UIActivityIndicatorView == nil {
                 // Update to indeterminate mode
                 indicator?.removeFromSuperview()
-                let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+                let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
                 activityIndicator.startAnimating()
                 indicator = activityIndicator
                 bezelView?.addSubview(activityIndicator)
@@ -617,14 +617,14 @@ public class HKProgressHUD: UIView {
     func registerForNotifications() {
         #if !os(tvOS)
             let nc = NotificationCenter.default
-            nc.addObserver(self, selector: #selector(statusBarOrientationDidChange(_:)), name: .UIApplicationDidChangeStatusBarOrientation, object: nil)
+            nc.addObserver(self, selector: #selector(statusBarOrientationDidChange(_:)), name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
         #endif
     }
     
     func unregisterFormNotifications() {
         #if !os(tvOS)
             let nc = NotificationCenter.default
-            nc.removeObserver(self, name: .UIApplicationDidChangeStatusBarOrientation, object: nil)
+            nc.removeObserver(self, name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
         #endif
     }
     
@@ -728,7 +728,7 @@ class ProgressHUDRoundedButton: UIButton {
     }
     
     override var intrinsicContentSize: CGSize {
-        if(self.allControlEvents == UIControlEvents(rawValue: 0)) {
+        if(self.allControlEvents == UIControl.Event(rawValue: 0)) {
             return CGSize.zero
         }
         var size = super.intrinsicContentSize
@@ -737,7 +737,7 @@ class ProgressHUDRoundedButton: UIButton {
     }
     
     // MARK: Color
-    override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
+    override func setTitleColor(_ color: UIColor?, for state: UIControl.State) {
         super.setTitleColor(color, for: state)
         // Update related colors
         let highlighted = isHighlighted
